@@ -8,7 +8,8 @@
     <title><?=PROJNAME?> | <?=isset($product)?$product->name:""?></title>
     <link rel="stylesheet" href="../../css/style.css">
     <script defer src="../../js/script.js"></script>
-    <script defer src="/ajax/ajax-main.js"></script>
+    <script type="module" defer src="/ajax/ajax-main.js"></script>
+    <script type="module" defer src="/ajax/functions.js"></script>
 </head>
 <body>
     <?php include $_SERVER['DOCUMENT_ROOT'] . "/templates/main-modal.view.php"?>

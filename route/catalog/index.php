@@ -19,6 +19,7 @@ if(isset($_GET['category_id']) && isset($_GET['brand_id'])){
 }elseif(isset($_GET['brand_id'])){
     if(is_numeric($_GET['brand_id']) && $_GET['brand_id']>=0){
         $products = $dataProduct->getProductsByBrand($_GET['brand_id']);
+        $categoriesInBrand = $dataCategory->getCategoriesByBrand($_GET['brand_id']);
     }
 }else{
     $products = $dataProduct->getAllRecords();

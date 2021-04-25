@@ -7,6 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title><?=PROJNAME?> | Корзина</title>
     <script defer src="/js/script.js"></script>
+    <script type="module" defer src="/ajax/ajax-main.js"></script>
+    <script type="module" defer src="/ajax/functions.js"></script>
     <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>

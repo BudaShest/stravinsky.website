@@ -51,4 +51,11 @@ class Category
         $stmt->execute([':super_cat_id'=>$superId]);
         return $stmt->fetchAll();
     }
+
+    public function getCategoriesByBrand(int $brandId)
+    {
+        $stmt = $this->pdo->prepare("SELECT c.id,c.name, c.sub_category_id,c.color,bic.brand_id FROM categories c INNER JOIN brands_in_categories bic on c.id = bic.category_id WHERE bic.brand_id = :brand_id");
+        $stmt->execute([':brand_id'=>$brandId]);
+        return $stmt->fetchAll();
+    }
 }

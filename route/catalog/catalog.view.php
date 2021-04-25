@@ -8,8 +8,9 @@
     <title><?=PROJNAME?> | Каталог</title>
     <link rel="stylesheet" href="https://faviconka.ru/ico/1/faviconka.ru_1_142741.ico">
     <link rel="stylesheet" href="../../css/style.css">
-    <script defer src="../../js/script.js"></script>
-    <script defer src="/ajax/ajax-main.js"></script>
+    <script defer src="/js/script.js"></script>
+    <script type="module" defer src="/ajax/ajax-main.js"></script>
+    <script type="module" defer src="/ajax/functions.js"></script>
 </head>
 <body>
     <?php include $_SERVER['DOCUMENT_ROOT'] . "/templates/main-modal.view.php"?>
@@ -20,6 +21,7 @@
             <div class="catalog-products col">
                 <header>
                     <form action="">
+                        <?php if(isset($_GET['category_id'])):?>
                         <label for="catalog-brand-select"></label>
                         <select name="" id="catalog-brand-select">
                             <option value="all">Все бренды</option>
@@ -27,6 +29,15 @@
                                 <option value="<?=$brandInCategory->id?>"><?=$brandInCategory->name?></option>
                             <?php endforeach;?>
                         </select>
+                        <?php elseif (isset($_GET['brand_id'])):?>
+                            <label for="catalog-category-select"></label>
+                            <select name="" id="catalog-category-select">
+                                <option value="all">Все категории</option>
+                                <?php foreach($categoriesInBrand as $categoryInBrand):?>
+                                    <option value="<?=$categoryInBrand->id?>"><?=$categoryInBrand->name?></option>
+                                <?php endforeach;?>
+                            </select>
+                        <?php endif;?>
                     </form>
                 </header>
                 <div class="catalog-products-container row">

@@ -7,7 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Авторизация</title>
     <link rel="stylesheet" href="../../css/style.css">
-    <script defer src="/js/ajax-test.js"></script>
+    <script type="module" defer src="/ajax/ajax-main.js"></script>
+    <script type="module" defer src="/ajax/functions.js"></script>
     <script defer src="/js/auth.js"></script>
     <script defer src="/js/script.js"></script>
 </head>

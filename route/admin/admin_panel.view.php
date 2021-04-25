@@ -7,8 +7,9 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title><?=PROJNAME?>| Admin-панель</title>
     <link rel="stylesheet" href="../../css/style.css">
-    <script defer src="../../js/admin-panel.js"></script>
-    <script defer src="/ajax/ajax-admin.js"></script>
+    <script defer src="/js/admin-panel.js"></script>
+    <script type="module" defer src="/ajax/functions.js"></script>
+    <script type="module" defer src="/ajax/ajax-admin.js"></script>
 </head>
 <body>
 <?php include $_SERVER['DOCUMENT_ROOT'] . "/templates/admin-modal-context.view.php"?>

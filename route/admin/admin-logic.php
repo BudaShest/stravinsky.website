@@ -38,13 +38,11 @@ if(isset($_POST['btn_brand_submit'])){
         $fileName = "default-img.jpg";
     }
     $name = htmlentities(capitalize($_POST['brand_name']));
+    $color = htmlentities($_POST['brand_color']);
+    $categoryId = (int)$_POST['brand_cat_id'];
     if(!checkName($dataBrand, $name, "brands")){
-        $color = htmlentities($_POST['brand_color']);
-        $categoryId = (int)$_POST['brand_cat_id'];
         $dataBrand->insertRecord($name, $categoryId, $fileName, $color);
 
-    }else{
-        //TODO Сделать в случае если имя уже есть
     }
     header('Location: /route/admin');
 }
