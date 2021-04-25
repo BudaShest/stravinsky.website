@@ -568,6 +568,7 @@ button:hover {
   background-color: #f3f3f3;
 }
 .wrapper .header .mobile-menu-toggler {
+  display: none;
   z-index: 2;
   width: 80px;
   height: 80px;
@@ -659,15 +660,7 @@ button:hover {
   flex-wrap: wrap;
 }
 .wrapper .catalog .cat > .row ul > li {
-  margin: 30px 0;
-}
-.wrapper .catalog .cat > .row .catalog-img {
-  align-items: center;
-  justify-content: center;
-}
-.wrapper .catalog .cat > .row .catalog-img img {
-  object-fit: contain;
-  max-height: 80%;
+  padding: 25px 10px;
 }
 .wrapper .brands {
   margin: 50px 0;
@@ -1466,6 +1459,21 @@ button:hover {
   .wrapper .header .current-user-info {
     display: none;
   }
+  .wrapper .header .mobile-menu-toggler {
+    display: block;
+  }
+  .wrapper .banner {
+    height: 400px;
+  }
+  .wrapper .banner .banner-block {
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+  .wrapper .banner .banner-block .banner-company-name {
+    font-size: 2.2em;
+  }
+  .wrapper .banner .banner-block .banner-slogan {
+    font-size: 1.6em;
+  }
   .wrapper .catalog {
     padding: 10px 25px;
   }
@@ -1513,6 +1521,9 @@ button:hover {
   .wrapper .contacts .container .all-links {
     flex-wrap: wrap;
   }
+  .wrapper .contacts .container .all-links a {
+    margin: 10px;
+  }
   .wrapper .contacts .container .all-mails {
     flex-wrap: wrap;
   }
@@ -1523,6 +1534,20 @@ button:hover {
   .wrapper-catalog {
     overflow: hidden;
   }
+  .wrapper-catalog .main .container {
+    padding: 14px;
+  }
+  .wrapper-catalog .main .one-product .one-product-top {
+    max-width: 100vw;
+    flex-wrap: wrap;
+  }
+  .wrapper-catalog .main .one-product .one-product-top #one-product-main-img {
+    width: 100%;
+    object-fit: contain;
+  }
+  .wrapper-catalog .main .one-product .one-product-top > * {
+    width: 100%;
+  }
   .wrapper-catalog .main .one-product iframe {
     width: 100%;
   }
@@ -1532,6 +1557,9 @@ button:hover {
   .wrapper-catalog .main .grid-payment {
     grid-template-rows: repeat(4, 1fr);
     grid-template-columns: 1fr;
+  }
+  .wrapper-catalog .main .grid-payment div {
+    max-width: 80vw;
   }
 
   .about-msg-active {

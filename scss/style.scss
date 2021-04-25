@@ -176,6 +176,7 @@ button{
       @include light-mode-btn();
     }
     .mobile-menu-toggler{
+      display: none;
       z-index: 2;
       width: 80px;
       height: 80px;
@@ -212,7 +213,7 @@ button{
       }
     }
   }
-
+  //Секция выдвжиного каталога
   .catalog{
     padding: 20px 45px;
     background-color: $main-col;
@@ -271,15 +272,15 @@ button{
           flex-wrap: wrap;
         }
         ul>li{
-          margin:30px 0;
+          padding: 25px 10px;
         }
-        .catalog-img{
-          @include center-flex();
-          img{
-            object-fit: contain;
-            max-height: 80%;
-          }
-        }
+        //.catalog-img{
+        //  @include center-flex();
+        //  img{
+        //    object-fit: contain;
+        //    max-height: 80%;
+        //  }
+        //}
       }
     }
   }
