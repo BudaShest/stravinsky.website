@@ -1,0 +1,29 @@
+//Здесь находятся тоглеры(активные классы для js)
+.catalog-active{
+  .container{
+    height: auto !important;
+    animation: opac 0.8s ease-out forwards;
+  }
+  animation: drop 0.5s ease-out forwards;
+}
+.rotating-form-active{
+  .front{
+    transform: rotateY(180deg);
+  }
+  .back{
+    transform: rotateY(360deg)!important;
+  }
+}
+.email-register-confirm-active{
+  display: block !important;
+  opacity: 1 !important;
+  transition: opacity 0.3s ease-out;
+}
+.about-msg-active{
+  position: relative;
+  display: block !important;
+  animation: appear 1s ease-out 1;
+}
+.crazy{
+  animation: appear 0.1s ease-out infinite;
+}

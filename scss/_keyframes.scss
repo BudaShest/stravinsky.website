@@ -1,0 +1,22 @@
+//Здесь находятся анимации
+@keyframes drop{
+  100%{
+    height: 520px;
+  }
+}
+@keyframes opac{
+  100%{
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+@keyframes appear{
+  0%{
+    left:100px;
+    opacity: 0;
+  }
+  100%{
+    left:0;
+    opacity: 1;
+  }
+}

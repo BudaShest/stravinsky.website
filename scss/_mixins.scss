@@ -1,0 +1,210 @@
+@mixin outer-shadow($offsetX, $offsetY, $blurRadius){
+  box-shadow:$offsetX $offsetY $blurRadius 0 rgba(0,0,0,0.3);
+}
+
+@mixin inner-shadow($offsetX, $offsetY, $blurRadius) {
+  box-shadow: inset $offsetX $offsetY $blurRadius 0 rgba(0, 0, 0, 0.3);
+
+}
+@mixin center-flex(){
+  align-items: center;
+  justify-content: center;
+}
+@mixin form-template($borderColor, $btnPosColor, $btnNegColor){
+  padding: 14px;
+  border:2px solid $borderColor;
+  background-color: $main-col;
+  @include outer-shadow(0, 2px,4px);
+
+  label,input, button, select, textarea{
+    font-weight: bold;
+    font-size:18px;
+    margin: 4px 0;
+    border: none;
+  }
+  input,select,textarea{
+    background-color: #e5e5e5;
+    margin-bottom: 10px;
+    padding: 6px;
+    @include inner-shadow(0, 1px, 5px);
+  }
+  .form-template-btns{
+    justify-content: space-around;
+    button{
+      border:none;
+      padding: 12px;
+      font-weight: lighter;
+      width: 120px;
+      color:white;
+    }
+    .btn-postive{
+      background-color: $btnPosColor;
+    }
+    .btn-negative{
+      background-color: $btnNegColor;
+    }
+  }
+
+}
+@mixin double-card(){
+  position: relative;
+  .front, .back{
+    position: absolute;
+    top:0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    transition: all 0.8s ease-out;
+  }
+  .back{
+    transform: rotateY(180deg);
+  }
+}
+@mixin rotate-card(){
+  perspective: 1000px;
+  @include double-card();
+  &:hover .front{
+    transform: rotateY(180deg);
+  }
+  &:hover .back{
+    transform: rotateY(360deg);
+  }
+}
+
+@mixin product-card(){
+  @include rotate-card();
+  width: 270px;
+  height: 400px;
+  margin: 14px 0;
+  .front,.back{
+
+    align-items: center;
+    border:2px solid $blue-col;
+    justify-content: space-between;
+    @include outer-shadow(1px,4px,4px);
+    overflow: hidden;
+  }
+  .front{
+    h4{
+      background-color: $blue-col;
+      color:white;
+      width: 100%;
+      padding: 10px 0;
+      text-align: center;
+    }
+    span{
+      margin: 7px;
+    }
+    img{
+      max-width: 96%;
+      max-height: 200px;
+    }
+    .product-category{
+      align-self: flex-start;
+      color:$blue-col;
+      font-size: 0.85em;
+    }
+    .row{
+      width: 100%;
+      justify-content: space-around;
+      .old-price{
+        font-size: 0.9em;
+      }
+      .new-price{
+        color: $red-col;
+        font-size: 1.1em;
+      }
+    }
+  }
+  .back{
+    padding: 6px;
+  }
+}
+
+@mixin simple-btn($backgroundColor){
+  border:none;
+  padding: 14px;
+  font-size: 1.1em;
+  background-color: $backgroundColor;
+  color:white;
+}
+
+@mixin user-info{
+  z-index: 2;
+  @include center-flex();
+  background-color: $main-col;
+  height: 100%;
+  padding: 15px 10px 0;
+  flex-wrap: wrap;
+  @include outer-shadow(2px,3px,8px);
+  &:hover{
+    .current-user-control{
+      form{
+        opacity: 1;
+        transition: all 0.5s ease-out;
+        height: auto;
+      }
+    }
+  }
+  span{
+    font-size: 1.1em;
+  }
+  img {
+    max-height: 80%;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin: 10px;
+  }
+}
+
+@mixin user-control{
+  width: 100%;
+  height: 0;
+  position: relative;
+  z-index: 1;
+  //top:50px;
+  form{
+    opacity: 0;
+    overflow: hidden;
+    height: 0;
+    button{
+      @include simple-btn($main-col);
+      color:black;
+      border-bottom: 2px solid $purple-col;
+    }
+  }
+}
+
+@mixin login-btn{
+  font-size: 1.1em;
+  border:2px solid $blue-col;
+  padding: 7px;
+  color: $blue-col;
+  background-color: white;
+  font-family: "SocuiSans", sans-serif;
+  border-radius: 15px;
+  text-decoration: none;
+  @include outer-shadow(1px,2px,4px);
+}
+
+@mixin light-mode-btn{
+  align-items: center;
+  justify-content: flex-start;
+  #light-mode-btn{
+    margin-top: 7px;
+    @include outer-shadow(1px,2px,4px);
+    cursor: pointer;
+    div{
+      @include center-flex();
+      border: 2px solid darkgrey;
+      width: 30px;
+      height: 22px;
+      font-size: 0.8em;
+      &:last-child{
+        background-color: $main-col;
+      }
+    }
+  }
+}

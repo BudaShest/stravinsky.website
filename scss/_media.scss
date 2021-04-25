@@ -1,0 +1,121 @@
+@media screen and(max-width: 1024px){
+  .wrapper{
+    grid-template-columns: repeat(4,1fr);
+    overflow: hidden;
+    section, .header, .footer, .banner, .catalog, .brands{
+      grid-column: 1/5;
+    }
+    .header{
+
+      .nav{
+        display: none;
+      }
+      .light-mode{
+        display: none;
+      }
+      #login-btn{
+        display: none;
+      }
+      .current-user-info{
+        display: none;
+      }
+    }
+    .catalog{
+      padding: 10px 25px;
+      .container{
+        .cat{
+          #mobile-supercat-menu{
+            display: block;
+          }
+          width: 100%;
+        }
+        .sub-cat{
+          display: none;
+        }
+      }
+    }
+    .brands{
+      .container{
+        flex-wrap: wrap;
+        height: auto;
+        .brand{
+          margin:15px 0;
+        }
+      }
+    }
+    .advert{
+      .container{
+        flex-wrap: wrap;
+        >*{
+          width: 100%;
+        }
+        .advert-img-block{
+          margin:10px 0;
+          a{
+            @include center-flex();
+          }
+        }
+        .advert-text{
+          align-items: center;
+        }
+      }
+    }
+    .about-us{
+
+      .container{
+        .about-msg{
+          width: 100%;
+          &:hover{
+            transform: none;
+          }
+          #map{
+            display: none;
+          }
+        }
+      }
+    }
+    .contacts{
+      .container{
+        .all-links{
+          flex-wrap: wrap;
+          a{
+
+          }
+        }
+        .all-mails{
+          flex-wrap: wrap;
+          .col{
+            margin:15px 0;
+          }
+        }
+      }
+    }
+  }
+
+  .wrapper-catalog{
+    overflow: hidden;
+    .main{
+      .one-product{
+        iframe{
+          width: 100%;
+        }
+      }
+      .one-product-rev{
+        .also-like{
+          display: none;
+        }
+      }
+      .grid-payment{
+        grid-template-rows: repeat(4,1fr);
+        grid-template-columns: 1fr;
+      }
+    }
+  }
+
+  .about-msg-active{
+    animation: none;
+  }
+  .wrapper-main{
+    overflow: hidden;
+  }
+}

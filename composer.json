@@ -1,0 +1,22 @@
+{
+    "name": "alex/stravinsky",
+    "description": "This is my course project",
+    "type": "project",
+    "license": "Standard",
+    "authors": [
+        {
+            "name": "BudaShest",
+            "email": "budashest@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "app\\": "app/",
+            "database\\": "database/"
+        }
+    },
+    "require": {
+      "ext-pdo": "*"
+    },
+
+}
