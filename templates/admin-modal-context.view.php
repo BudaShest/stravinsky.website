@@ -3,6 +3,6 @@
         <input type="text" name="context_table_name" id="context-table-name" readonly>
         <input type="text" name="context_table_id" id="context-table-id" readonly>
         <button name="btn_delete_row">Удалить</button>
-        <button>Изменить</button>
+        <button name="btn_update_row">Изменить</button>
     </form>
 </div>

@@ -5,6 +5,7 @@
 .modal-context-menu {
   position: absolute;
   display: none;
+  z-index: 2;
 }
 
 .modal-context-menu-active {

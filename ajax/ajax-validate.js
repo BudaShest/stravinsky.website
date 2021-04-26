@@ -10,15 +10,18 @@ let passwordCheck = false;
 let regConfirmPasswordInput = document.querySelector('#user-password-confirm-input');
 let passwordConfirmCheck = false;
 
-registerForm.addEventListener('submit',function (e){
-    // e.preventDefault();
-   if(loginCheck && emailCheck && passwordCheck && passwordConfirmCheck){
-      registerForm.submit();
-   }else{
-       alert('Заполните данные формы корректно');
-   }
+function validateForm(){
+    if(loginCheck && emailCheck && passwordCheck && passwordConfirmCheck){
+        return true;
+    }else{
+        alert('Заполните данные формы корректно');
+        return false;
+    }
+}
 
-});
+registerForm.onsubmit = function (){
+    return validateForm();
+}
 
 regLoginInput.addEventListener('change',function (){
    let params = this.value.trim();

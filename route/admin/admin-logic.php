@@ -92,6 +92,7 @@ if(isset($_GET['btn_delete_row'])){
             $dataProduct->deleteOneRecord($_GET['context_table_id']);
             break;
         case "admin-users-settings":
+            //TODO необходимо также сделать удаление картинок в комментарияхы
             $imgName = $dataUser->getImageName($_GET['context_table_id']);
             $fileWorker->deleteOneImg($imgName,'user-data');
             $dataUser->deleteOneRecord($_GET['context_table_id']);
@@ -105,12 +106,6 @@ if(isset($_GET['btn_delete_row'])){
     header('Location: /route/admin');
 }
 
-//if(isset($_POST['app_update_btn'])){
-//    if(isset($_POST['app_update_id']) && isset($_POST['app_update_status'])){
-//        $dataApplication->changeStatus($_GET['app_update_id'], $_GET['app_update_status']);
-//    }
-//    header('Location: /route/admin');
-//}
 
 if(isset($_POST['btn_banner_submit'])){
     $header = htmlentities(trim($_POST['banner_header']));
