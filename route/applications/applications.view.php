@@ -20,6 +20,7 @@
             <div class="container">
                 <h2>Ваши заявки</h2>
                 <div class="user-applications">
+                    <?php if(isset($userApplications) && count($userApplications)>0):?>
                     <?php foreach ($userApplications as $userApplication):?>
                         <a href="">
                             <div class="row user-application">
@@ -30,6 +31,9 @@
                             </div>
                         </a>
                     <?php endforeach;?>
+                    <?php else:?>
+                        <span>У вас ещё нет заявок. </span>
+                    <?php endif;?>
                 </div>
             </div>
         </main>
