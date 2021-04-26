@@ -1,5 +1,7 @@
 <?php
+session_start();
 require $_SERVER['DOCUMENT_ROOT'] . "/bootstrap.php";
+use app\Validate;
 
 //TODO эти две функии ниже перенести
 function capitalize($str){ //TODO Крайне сомнительная функция(c русским языком) //TODO Теперь вроде норм
@@ -40,10 +42,18 @@ if(isset($_POST['btn_brand_submit'])){
     $name = htmlentities(capitalize($_POST['brand_name']));
     $color = htmlentities($_POST['brand_color']);
     $categoryId = (int)$_POST['brand_cat_id'];
-    if(!checkName($dataBrand, $name, "brands")){
-        $dataBrand->insertRecord($name, $categoryId, $fileName, $color);
-
+    if(isset($_SESSION['update_brand'])){
+        if(!isset($_FILES['brand_logo'])){
+            $fileName = Validate::validateString($_POST['brand_img_str']);
+        }
+        $dataBrand->updateBrand($_SESSION['update_brand']['id'],$name,$categoryId,$fileName,$color);
+        unset($_SESSION['update_brand']);
+    }else{
+        if(!checkName($dataBrand, $name, "brands")){
+            $dataBrand->insertRecord($name, $categoryId, $fileName, $color);
+        }
     }
+
     header('Location: /route/admin');
 }
 
@@ -106,6 +116,34 @@ if(isset($_GET['btn_delete_row'])){
     header('Location: /route/admin');
 }
 
+//Логика изменения постов
+if(isset($_GET['btn_update_row'])){
+    switch ($_GET['context_table_name']){
+        case "admin-main-settings":
+            $bannerRecord = $dataBanner->searchRecord($_GET['context_table_id'],true);
+            $_SESSION['update_banner'] = $bannerRecord;
+            break;
+        case "admin-brand-settings":
+            $brandRecord = $dataBrand->searchRecord($_GET['context_table_id'],true);
+            $_SESSION['update_brand'] = $brandRecord;
+            break;
+        case "admin-category-settings":
+
+            break;
+        case "admin-product-settings":
+
+            break;
+        case "admin-users-settings":
+
+            break;
+        case "admin-users-applications":
+        case "admin-one-user-settings":
+
+            break;
+
+    }
+    header('Location: /route/admin');
+}
 
 if(isset($_POST['btn_banner_submit'])){
     $header = htmlentities(trim($_POST['banner_header']));
@@ -116,8 +154,26 @@ if(isset($_POST['btn_banner_submit'])){
     $when = htmlentities(trim($_POST['banner_when']));
     $link = htmlentities(trim($_POST['banner_link']));
 
-    $dataBanner->insertRecord($header, $text, $img, $what, $where, $when, $link);
+    if(isset($_SESSION['update_banner'])){
+        if(!isset($_FILES['banner_img'])){
+            $img = Validate::validateString($_POST['banner_img_str']);
+        }
+        $dataBanner->updateBanner($_SESSION['update_banner']['id'],$header,$text,$img,$what,$where,$when,$link);
+        unset($_SESSION['update_banner']);
+    }else{
+        $dataBanner->insertRecord($header, $text, $img, $what, $where, $when, $link);
+    }
+
     header('Location: /route/admin');
 }
 
+if(isset($_POST['btn_update_banner_delete'])){
+    unset($_SESSION['update_banner']);
+    header('Location: /route/admin');
+}
+
+if(isset($_POST['btn_update_brand_delete'])){
+    unset($_SESSION['update_brand']);
+    header('Location: /route/admin');
+}
 

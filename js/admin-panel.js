@@ -10,6 +10,14 @@ let contextMenu = document.querySelector('.modal-context-menu');
 let contextTableInput = document.querySelector('#context-table-name');
 let contextIdInput = document.querySelector('#context-table-id');
 
+let bannerImgInput = document.querySelector('#banner-img-input');
+let bannerStrImgInput = document.querySelector('#banner-img-str');
+
+if(bannerImgInput && bannerStrImgInput){
+    bannerImgInput.addEventListener('change',function (){
+        bannerStrImgInput.value = this.files[0]['name'];
+    });
+}
 
 if(menuToggler !== null){
     menuToggler.addEventListener('click',function (){

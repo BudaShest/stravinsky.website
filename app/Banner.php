@@ -14,10 +14,13 @@ class Banner
         $this->pdo = $pdo;
     }
 
-    public function searchRecord(int $bannerId)
+    public function searchRecord(int $bannerId, bool $assoc=false)
     {
         $stmt=$this->pdo->prepare('SELECT * FROM banner WHERE id=:id');
         $stmt->execute([':id'=>$bannerId]);
+        if($assoc){
+            return $stmt->fetch(PDO::FETCH_ASSOC);
+        }
         return $stmt->fetch();
     }
 
@@ -38,6 +41,22 @@ class Banner
             ':where'=>$where,
             ':when'=>$when,
             ':link'=>$link
+        ]);
+    }
+
+    //Обнолвение баннера
+    public function updateBanner(int $bannerId,string $header, string $text,string $image, string $what, string $where, string $when, string $link)
+    {
+        $stmt = $this->pdo->prepare('UPDATE banner SET header = :header, text = :text, image = :image, what = :what,`where`=:where,`when`=:when,link=:link WHERE banner.id = :banner_id');
+        $stmt->execute([
+           ':header'=>$header,
+            ':text'=>$text,
+            ':image'=>$image,
+            ':what'=>$what,
+            ':where'=>$where,
+            ':when'=>$when,
+            ':link'=>$link,
+            ':banner_id'=>$bannerId
         ]);
     }
 

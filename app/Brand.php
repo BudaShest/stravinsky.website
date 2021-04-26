@@ -55,12 +55,25 @@ class Brand
             "brand_id"=>$lastId,
             "category_id"=>$categoryId
         ]);
-
     }
 
-    public function searchRecord()
+    public function updateBrandsCategory(int $brandId, int $categoryId)
     {
-        // TODO: Implement searchRecord() method.
+        $stmt = $this->pdo->prepare("UPDATE brands_in_categories SET category_id = :category_id WHERE brand_id = :brand_id");
+        $stmt->execute([
+            ':category_id'=>$categoryId,
+            ':brand_id'=>$brandId
+        ]);
+    }
+
+    public function searchRecord(int $brandId, bool $assoc=false)
+    {
+        $stmt = $this->pdo->prepare('SELECT b.id,b.name,b.image,b.color,bic.brand_id,bic.category_id, c.name as cat_name FROM brands b INNER JOIN brands_in_categories bic ON b.id = bic.brand_id INNER JOIN categories c on bic.category_id = c.id WHERE b.id = :brand_id');
+        $stmt->execute([':brand_id'=>$brandId]);
+        if($assoc){
+            return $stmt->fetch(PDO::FETCH_ASSOC);
+        }
+        return $stmt->fetch();
     }
 
     public function getBrandsByCategory(int $categoryId)
@@ -68,6 +81,19 @@ class Brand
         $stmt = $this->pdo->prepare('SELECT b.id,b.name,b.image,b.color,bic.brand_id,bic.category_id, c.name as cat_name FROM brands b INNER JOIN brands_in_categories bic ON b.id = bic.brand_id INNER JOIN categories c on bic.category_id = c.id WHERE bic.category_id = :category_id');
         $stmt->execute([':category_id'=>$categoryId]);
         return $stmt->fetchAll();
+    }
+
+    public function updateBrand(int $brandId, string $name, int $categoryId, string $image, string $color){
+        $stmt = $this->pdo->prepare('UPDATE brands SET name = :name,image = :image, color = :color WHERE id=:brand_id');
+        $stmt->execute([
+            ':name'=>$name,
+            ':image'=>$image,
+            ':color'=>$color,
+            ':brand_id'=>$brandId
+        ]);
+
+        $this->updateBrandsCategory($brandId,$categoryId);
+
     }
 
 

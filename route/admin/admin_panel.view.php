@@ -28,24 +28,43 @@
     <main class="main col">
         <section id="admin-main-settings" class="row">
             <div class="container col">
+                <header>
+                    <?php if(isset($_SESSION['update_banner'])):?>
+                    <h4>Текующий пост для редактирования</h4>
+                    <div class="current-banner-update line-row row">
+                        <div class="row"><img src="/imgs/admin-data/<?=$_SESSION['update_banner']['image']?>" alt=""></div>
+                        <div class="row"><?=mb_strcut($_SESSION['update_banner']['header'],0,75)?></div>
+                        <div class="row"><?=mb_strcut($_SESSION['update_banner']['what'],0,75) ?></div>
+                        <div class="row">
+                            <form method="post" action="/route/admin/admin-logic.php">
+                                <button name="btn_update_banner_delete">Удалить</button>
+                            </form>
+                        </div>
+                    </div>
+                    <?php endif;?>
+                </header>
                 <h2>Основные настройки:</h2>
                 <form action="/route/admin/admin-logic.php" class="col" method="post" enctype="multipart/form-data">
                     <label for="banner-header-input">Заголовок баннера</label>
-                    <input name="banner_header" type="text" id="banner-header-input" required>
+                    <input name="banner_header" type="text" id="banner-header-input" required value="<?=$_SESSION['update_banner']['header']??""?>">
                     <label for="banner-text-input">Текст</label>
-                    <textarea name="banner_text" id="banner-text-input" required></textarea>
+                    <textarea name="banner_text" id="banner-text-input" required><?=$_SESSION['update_banner']['text']??""?></textarea>
                     <label for="banner-img-input">Картинка</label>
-                    <input name="banner_img" type="file" id="banner-img-input" required>
+                    <input name="banner_img" type="file" id="banner-img-input" <?=!isset($_SESSION['update_banner']['image'])?"required":""?>>
+                    <?php if(isset($_SESSION['update_banner']['image'])):?>
+                    <label for="banner-img-str">Текущее изображение(выберите новое выше или оставьте без именений)</label>
+                    <input type="text" readonly value="<?=$_SESSION['update_banner']['image']??""?>" id="banner-img-str" name="banner_img_str">
+                    <?php endif;?>
                     <label for="banner-what-input">Что(текст)</label>
-                    <input name="banner_what" type="text" id="banner-what-input" required>
+                    <input name="banner_what" type="text" id="banner-what-input" required  value="<?=$_SESSION['update_banner']['what']??""?>">
                     <label for="banner-where-input">Где(текст)</label>
-                    <input name="banner_where" type="text" id="banner-where-input" required>
+                    <input name="banner_where" type="text" id="banner-where-input" required  value="<?=$_SESSION['update_banner']['where']??""?>">
                     <label for="banner-when-input">Когда(текст)</label>
-                    <input name="banner_when" type="text" id="banner-when-input" required>
+                    <input name="banner_when" type="text" id="banner-when-input" required  value="<?=$_SESSION['update_banner']['when']??""?>">
                     <label for="banner-link-select">Ссылка на продукт</label>
                     <select name="banner_link" id="banner-link-select" required>
                         <?php foreach ($products as $product):?>
-                            <option value="<?=$product->id?>"><?=$product->name?></option>
+                            <option value="<?=$_SESSION['update_banner']['link']??$product->id?>"><?=$_SESSION['update_banner']['link']??$product->name?></option>
                         <?php endforeach;?>
                     </select>
                     <div class="form-template-btns row">
@@ -72,20 +91,43 @@
         </section>
         <section id="admin-brand-settings" class="row">
             <div class="container col">
+                <header>
+                    <?php if(isset($_SESSION['update_brand'])):?>
+                        <h4>Текующий бренд для редактирования</h4>
+                        <div class="current-brand-update line-row row">
+                            <div class="row"><img src="/imgs/admin-data/<?=$_SESSION['update_brand']['image']?>" alt=""></div>
+                            <div class="row"><?=mb_strcut($_SESSION['update_brand']['cat_name'],0,75)?></div>
+                            <div class="row"><?=mb_strcut($_SESSION['update_brand']['name'],0,75) ?></div>
+                            <div class="row">
+                                <form method="post" action="/route/admin/admin-logic.php">
+                                    <button name="btn_update_brand_delete">Удалить</button>
+                                </form>
+                            </div>
+                        </div>
+                    <?php endif;?>
+                </header>
                 <h2>Настройки бренда:</h2>
                 <form action="/route/admin/admin-logic.php" class="col" method="post" enctype="multipart/form-data">
                     <label for="brand-name-input">Название бренда:</label>
-                    <input type="text" id="brand-name-input" name="brand_name">
+                    <input type="text" id="brand-name-input" name="brand_name" value="<?=$_SESSION['update_brand']['name']??''?>">
                     <label for="brand-category-input">Категория бренда: </label>
                     <select name="brand_cat_id" id="brand-category-input">
                         <?php foreach ($categories as $category):?>
-                            <option value="<?=$category->id?>"><?=$category->name?></option>
+                            <?php if(isset($_SESSION['update_brand'])):?>
+                                <option <?= $_SESSION['update_brand']['category_id']==$category->id?"selected":""?> value="<?=$category->id?>"><?=$category->name?></option>
+                            <?php else:?>
+                                <option value="<?=$category->id?>"><?=$category->name?></option>
+                            <?php endif;?>
                         <?php endforeach;?>
                     </select>
                     <label for="brand-logo-input">Логотип бренда</label>
                     <input type="file" id="brand-logo-input" name="brand_logo" accept="image/gif, image/jpeg, image/png, image/pjpeg, image/svg">
+                    <?php if(isset($_SESSION['update_brand']['image'])):?>
+                        <label for="brand-img-str">Текущее изображение(выберите новое выше или оставьте без именений)</label>
+                        <input type="text" readonly value="<?=$_SESSION['update_brand']['image']??""?>" id="brand-img-str" name="brand_img_str">
+                    <?php endif;?>
                     <label for="brand-color-input">Цвет бренда</label>
-                    <input type="color" id="brand-color-input" name="brand_color">
+                    <input type="color" id="brand-color-input" name="brand_color" value="<?=$_SESSION['update_brand']['color']??''?>">
                     <div class="form-template-btns row">
                         <button type="submit" class="btn-postive" name="btn_brand_submit">Отправить</button>
                         <button type="reset" class="btn-negative">Стереть</button>
