@@ -27,3 +27,11 @@
 .crazy{
   animation: appear 0.1s ease-out infinite;
 }
+.text-drop-active{
+  height: auto !important;
+  transition: all 0.3s ease-out;
+}
+.review-imgs-active{
+  transition:all 0.3s ease-out;
+  height: auto !important;
+}

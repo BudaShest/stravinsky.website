@@ -40,6 +40,24 @@ button{
   outline: none;
 }
 
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+  border-radius: 10px;
+  &:horizontal{
+    display: none;
+  }
+}
+
+
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
+}
+
 //Мобильное модальное меню
 .mobile-menu-modal{
   z-index: 3;
@@ -577,13 +595,30 @@ button{
       h2{
         margin-bottom: 14px;
       }
+      .text-drop{
+        header{
+
+          h4{
+            margin-bottom: 14px;
+          }
+          img{
+            display: none;
+          }
+        }
+      }
       .one-product-top{
+        max-height: 600px;
         margin:15px 0;
         justify-content: center;
+        width: 100%;
+        .one-product-feature{
+          overflow: scroll;
+          padding: 20px;
+        }
         #one-product-main-img{
-          max-height: 600px;
+          height: 500px;
           margin: 14px;
-          max-width: 800px;
+          max-width: 100%;
 
           object-fit: contain;
           align-self: center;
@@ -593,10 +628,12 @@ button{
         }
         .one-product-imgs{
           justify-content: flex-end;
+          padding: 20px;
           .mini-imgs{
             max-width: 300px;
             align-self: center;
             justify-content: space-between;
+            margin-bottom: 20px;
             img{
               object-fit: contain;
               //object-fit: contain;
@@ -605,6 +642,11 @@ button{
             }
           }
         }
+      }
+      .one-product-description{
+        padding: 20px 0;
+
+
       }
       iframe{
         margin:25px 0;
@@ -640,7 +682,13 @@ button{
             }
           }
           .review-imgs{
+            overflow: hidden;
+            header{
+              height: 50px;
+              padding: 10px 0;
+            }
             width: 100%;
+            height: 50px;
           }
         }
       }
@@ -652,22 +700,22 @@ button{
         width: 70%;
         min-width: 350px;
       }
-      .also-like{
-        margin:20px 0;
-        justify-content: space-evenly;
-        .product{
-          @include product-card();
-        }
-      }
 
+    }
+    .also-like{
+      margin:20px 0;
+      justify-content: space-evenly;
+      .product{
+        @include product-card();
+      }
     }
   }
 }
 
-
+//Медиа запросы
+@import "_media";
 //Тоглеры
 @import "_keyframes";
 //Кейфреймы
 @import "_togglers";
-//Медиа запросы
-@import "_media";
+

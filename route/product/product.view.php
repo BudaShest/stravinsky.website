@@ -6,8 +6,8 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title><?=PROJNAME?> | <?=isset($product)?$product->name:""?></title>
-    <link rel="stylesheet" href="../../css/style.css">
-    <script defer src="../../js/script.js"></script>
+    <link rel="stylesheet" href="/css/style.css">
+    <script defer src="/js/script.js"></script>
     <script type="module" defer src="/ajax/ajax-main.js"></script>
     <script type="module" defer src="/ajax/functions.js"></script>
 </head>
@@ -31,11 +31,21 @@
                                     <?php endforeach;?>
                                 </div>
                             </div>
-                            <div class="col">
+                            <div class="col one-product-feature text-drop">
+                                <header class="row">
+                                    <h4>Характеристики</h4>
+                                    <img src="/imgs/togglers/down.png" alt="Стрелка вниз">
+                                </header>
                                 <p><?=$product->feature?></p>
                             </div>
                         </div>
-                        <p><?=$product->description?></p>
+                        <div class="col one-product-description text-drop">
+                            <header class="row">
+                                <h4>Описание</h4>
+                                <img src="/imgs/togglers/down.png" alt="Стрелка вниз">
+                            </header>
+                            <p><?=$product->description?></p>
+                        </div>
                         <?php if($product->video!==null && $product->video!==""):?>
                         <iframe width="560" height="315" src="<?=$product->video?>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                         <?php endif;?>
@@ -77,8 +87,11 @@
                                 <p><?=$review->text?></p>
                                 <span class="review-date"><?=$review->created_at?></span>
                                 <?php $reviewImgs=$dataReview->getImageName($review->id)?>
-                                <?php if(isset($reviewImgs) && $reviewImgs !== null):?>
+                                <?php if(isset($reviewImgs) && count($reviewImgs)>0):?>
                                     <div class="review-imgs col">
+                                        <header>
+                                            <h5>Показать вложения</h5>
+                                        </header>
                                         <?php foreach($reviewImgs as $reviewImg):?>
                                             <img src="/imgs/user-data/<?=$reviewImg?>" alt="">
                                         <?php endforeach;?>
@@ -91,26 +104,26 @@
                         <?php endif;?>
                     </div>
                     <h3>Вам также может быть интересно</h3>
-                    <div class="row also-like">
-                        <?php foreach($anotherProducts as $anotherProduct):?>
-                            <a href="/route/product/index.php?product_id=<?=$anotherProduct->id?>">
-                                <div class="product col">
-                                    <div class="front col">
-                                        <h3><?=$anotherProduct->name?></h3>
-                                        <span class="product-category"><?=$anotherProduct->cat_name?></span>
-                                        <img src="../../imgs/admin-data/<?=$anotherProduct->image?>" alt="">
-                                        <span><?=$anotherProduct->rating?></span>
-                                        <div class="row">
-                                            <span class="old-price"><strike><?=$anotherProduct->price?> руб.</strike></span><span class="new-price"><?=$anotherProduct->price?> руб.</span>
-                                        </div>
-                                    </div>
-                                    <div class="back col">
-                                        <p><?=mb_strcut($anotherProduct->description,0,600)?>...</p>
+                </div>
+                <div class="row also-like">
+                    <?php foreach($anotherProducts as $anotherProduct):?>
+                        <a href="/route/product/index.php?product_id=<?=$anotherProduct->id?>">
+                            <div class="product col">
+                                <div class="front col">
+                                    <h4><?=$anotherProduct->name?></h4>
+                                    <span class="product-category"><?=$anotherProduct->cat_name?></span>
+                                    <img src="../../imgs/admin-data/<?=$anotherProduct->image?>" alt="">
+                                    <span><?=$anotherProduct->rating?></span>
+                                    <div class="row">
+                                        <span class="old-price"><strike><?=$anotherProduct->price?> руб.</strike></span><span class="new-price"><?=$anotherProduct->price?> руб.</span>
                                     </div>
                                 </div>
-                            </a>
-                        <?php endforeach; ?>
-                    </div>
+                                <div class="back col">
+                                    <p><?=mb_strcut($anotherProduct->description,0,600)?>...</p>
+                                </div>
+                            </div>
+                        </a>
+                    <?php endforeach; ?>
                 </div>
             </div>
         </main>
