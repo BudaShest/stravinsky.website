@@ -451,6 +451,7 @@ button:hover {
 }
 .wrapper a {
   text-decoration: none;
+  color: #433e3e;
 }
 .wrapper section {
   grid-column: 2/6;
@@ -507,6 +508,12 @@ button:hover {
   margin: 0 15px;
   font-size: 1.25em;
   text-decoration: none;
+  border-bottom: 2px solid rgba(0, 0, 0, 0);
+  padding: 10px;
+}
+.wrapper .header .nav a:hover {
+  border-bottom: 2px solid #E56CCF;
+  transition: all 0.4s ease-out;
 }
 .wrapper .header .current-user-info {
   z-index: 2;
@@ -1068,6 +1075,9 @@ button:hover {
 .wrapper-catalog .main .basket-container form .form-template-btns .btn-negative {
   background-color: #02B091;
 }
+.wrapper-catalog .main .basket-container form .form-template-btns {
+  flex-direction: column;
+}
 .wrapper-catalog .main .basket-container .basket-product {
   width: 100%;
   justify-content: space-between;
@@ -1278,6 +1288,20 @@ button:hover {
 }
 .wrapper-catalog .main .one-product iframe {
   margin: 25px 0;
+}
+.wrapper-catalog .main .one-product-bottom > * {
+  width: 50%;
+}
+.wrapper-catalog .main .one-product-bottom .product-cash {
+  align-items: center;
+  justify-content: center;
+}
+.wrapper-catalog .main .one-product-bottom .product-cash > span {
+  align-items: center;
+}
+.wrapper-catalog .main .one-product-bottom .product-cash .product-price {
+  font-size: 2.2em;
+  color: red;
 }
 .wrapper-catalog .main .one-product-rev {
   align-items: center;

@@ -51,14 +51,22 @@
                         <?php endif;?>
                     </div>
                     <?php if(isset($_SESSION['auth_user_id'])):?>
-                    <form action="/route/basket/basket-logic.php" class="form-basket-control col" method="get">
-                        <input type="number" name="product_id" value="<?=$_GET['product_id']?>" readonly hidden>
-                        <label for="product-num-input">Кол-во товара:</label>
-                        <input type="number" min="1" max="10" id="product-num-input" name="product_basket_num">
-                        <div class="form-template-btns row">
-                            <button type="submit" class="btn-postive" name="btn_basket_submit">Отправить</button>
+                    <div class="row one-product-bottom">
+                        <form action="/route/basket/basket-logic.php" class="form-basket-control col" method="get">
+                            <input type="number" name="product_id" value="<?=$_GET['product_id']?>" readonly hidden>
+                            <label for="product-num-input">Кол-во товара:</label>
+                            <input type="number" min="1" max="10" id="product-num-input" name="product_basket_num">
+                            <div class="form-template-btns row">
+                                <button type="submit" class="btn-postive" name="btn_basket_submit">Отправить</button>
+                            </div>
+                        </form>
+                        <div class="col product-cash">
+                            <?php if(isset($product)):?>
+                                <span class="row"><span id="one-product-price" class="product-price"><?=$product->price?></span>руб.</span>
+                                <span class="row"><span id="one-product-sum-price"></span>руб.</span>
+                            <?php endif;?>
                         </div>
-                    </form>
+                    </div>
                     <?php endif;?>
                 <?php endif;?>
                 <div class="one-product-rev col">

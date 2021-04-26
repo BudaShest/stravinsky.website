@@ -19,9 +19,23 @@ let textDropElements = document.querySelectorAll('.text-drop');
 
 let reviewsImgsTogglers = document.querySelectorAll('.review-imgs');
 
-reviewsImgsTogglers.forEach(item=>item.addEventListener('click',function (e){
-   item.classList.toggle('review-imgs-active');
-}))
+let productNumInput = document.querySelector('#product-num-input');
+let productPrice = document.querySelector('#one-product-price');
+let oneProductSumPrice = document.querySelector('#one-product-sum-price');
+
+if(productNumInput!==null && productPrice!==null ** oneProductSumPrice!==null){
+   productNumInput.addEventListener('change',function (){
+      oneProductSumPrice.textContent = productPrice.textContent * this.value;
+
+   });
+}
+
+if(reviewsImgsTogglers.length>0){
+   reviewsImgsTogglers.forEach(item=>item.addEventListener('click',function (e){
+      item.classList.toggle('review-imgs-active');
+   }))
+}
+
 
 if(textDropElements.length>0){
    textDropElements.forEach(item=>item.addEventListener('click',function (){
