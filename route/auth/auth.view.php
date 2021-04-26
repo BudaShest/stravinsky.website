@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="../../css/style.css">
     <script type="module" defer src="/ajax/ajax-main.js"></script>
     <script type="module" defer src="/ajax/functions.js"></script>
+    <script type="module" defer src="/ajax/ajax-validate.js"></script>
     <script defer src="/js/auth.js"></script>
     <script defer src="/js/script.js"></script>
 </head>
@@ -41,13 +42,15 @@
                     </form>
                 </div>
                 <div class="back row">
-                    <form action="/route/auth/user-logic.php" class="col" method="post" enctype="multipart/form-data">
+                    <form id="register-form" action="/route/auth/user-logic.php" class="col" method="post" enctype="multipart/form-data">
                         <?php if(isset($_SESSION['reg_error'])):?>
                             <div class="error"><?=$_SESSION['reg_error']?></div>
                         <?php endif; ?>
                         <label for="user-login-input">Логин:</label>
-                        <input type="text" name="user_login" id="user-login-input" required>
+                        <span></span>
+                        <input type="text" name="user_login" id="user-login-input" required minlength="4" maxlength="11">
                         <label for="user-email-input">Email:</label>
+                        <span></span>
                         <input type="email" name="user_email" id="user-email-input">
                         <div class="email-register-confirm col">
                             <label for="user-email-code">Код подтвеждения</label>
@@ -55,8 +58,10 @@
                             <input name="user_email_code" type="text" id="user-email-code" readonly hidden>
                         </div>
                         <label for="user-password-input">Пароль:</label>
+                        <span></span>
                         <input type="password" name="user_password" id="user-password-input" required>
                         <label for="user-password-confirm-input">Повторите пароль:</label>
+                        <span></span>
                         <input type="password" id="user-password-confirm-input" required>
                         <label for="user-img-input">Аватар:</label>
                         <input type="file" name="user_img" id="user-img-input">

@@ -15,6 +15,7 @@ use app\Basket;
 use app\Application;
 use app\Banner;
 
+
 $dataUser = new User(Connect::makeConn(CONNECTION));
 $dataCategory = new Category(Connect::makeConn(CONNECTION));
 $dataProduct = new Product(Connect::makeConn(CONNECTION));

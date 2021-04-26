@@ -76,6 +76,10 @@
   width: 70%;
   min-width: 400px;
 }
+.admin-wrapper .main .auth-admin-form span {
+  max-width: 300px;
+  width: 100%;
+}
 .admin-wrapper .main .auth-admin-form label, .admin-wrapper .main .auth-admin-form input, .admin-wrapper .main .auth-admin-form button, .admin-wrapper .main .auth-admin-form select, .admin-wrapper .main .auth-admin-form textarea {
   font-weight: bold;
   font-size: 18px;
@@ -124,6 +128,10 @@
   background-color: #f3f3f3;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.3);
   margin: 14px;
+}
+.admin-wrapper .main section .container form span {
+  max-width: 300px;
+  width: 100%;
 }
 .admin-wrapper .main section .container form label, .admin-wrapper .main section .container form input, .admin-wrapper .main section .container form button, .admin-wrapper .main section .container form select, .admin-wrapper .main section .container form textarea {
   font-weight: bold;
@@ -952,6 +960,10 @@ button:hover {
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.3);
   box-shadow: 2px 4px 10px 0 rgba(0, 0, 0, 0.3);
 }
+.wrapper-main .main form span {
+  max-width: 300px;
+  width: 100%;
+}
 .wrapper-main .main form label, .wrapper-main .main form input, .wrapper-main .main form button, .wrapper-main .main form select, .wrapper-main .main form textarea {
   font-weight: bold;
   font-size: 18px;
@@ -1013,6 +1025,10 @@ button:hover {
   background-color: #f3f3f3;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.3);
 }
+.wrapper-catalog .main .form-basket-control span {
+  max-width: 300px;
+  width: 100%;
+}
 .wrapper-catalog .main .form-basket-control label, .wrapper-catalog .main .form-basket-control input, .wrapper-catalog .main .form-basket-control button, .wrapper-catalog .main .form-basket-control select, .wrapper-catalog .main .form-basket-control textarea {
   font-weight: bold;
   font-size: 18px;
@@ -1046,6 +1062,10 @@ button:hover {
   border: 2px solid #3E6FB9;
   background-color: #f3f3f3;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.3);
+}
+.wrapper-catalog .main .basket-container form span {
+  max-width: 300px;
+  width: 100%;
 }
 .wrapper-catalog .main .basket-container form label, .wrapper-catalog .main .basket-container form input, .wrapper-catalog .main .basket-container form button, .wrapper-catalog .main .basket-container form select, .wrapper-catalog .main .basket-container form textarea {
   font-weight: bold;
@@ -1133,6 +1153,10 @@ button:hover {
   border: 2px solid #E56CCF;
   background-color: #f3f3f3;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.3);
+}
+.wrapper-catalog .main .catalog-products header form span, .wrapper-catalog .main .catalog-products footer form span {
+  max-width: 300px;
+  width: 100%;
 }
 .wrapper-catalog .main .catalog-products header form label, .wrapper-catalog .main .catalog-products header form input, .wrapper-catalog .main .catalog-products header form button, .wrapper-catalog .main .catalog-products header form select, .wrapper-catalog .main .catalog-products header form textarea, .wrapper-catalog .main .catalog-products footer form label, .wrapper-catalog .main .catalog-products footer form input, .wrapper-catalog .main .catalog-products footer form button, .wrapper-catalog .main .catalog-products footer form select, .wrapper-catalog .main .catalog-products footer form textarea {
   font-weight: bold;
@@ -1347,6 +1371,10 @@ button:hover {
   border: 2px solid #3E6FB9;
   background-color: #f3f3f3;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.3);
+}
+.wrapper-catalog .main .one-product-rev form span {
+  max-width: 300px;
+  width: 100%;
 }
 .wrapper-catalog .main .one-product-rev form label, .wrapper-catalog .main .one-product-rev form input, .wrapper-catalog .main .one-product-rev form button, .wrapper-catalog .main .one-product-rev form select, .wrapper-catalog .main .one-product-rev form textarea {
   font-weight: bold;

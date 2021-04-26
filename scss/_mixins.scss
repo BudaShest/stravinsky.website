@@ -15,7 +15,10 @@
   border:2px solid $borderColor;
   background-color: $main-col;
   @include outer-shadow(0, 2px,4px);
-
+  span{
+    max-width: 300px;
+    width: 100%;
+  }
   label,input, button, select, textarea{
     font-weight: bold;
     font-size:18px;
