@@ -21,9 +21,9 @@ function checkName($dataHandler,$name, $tableName){
 }
 
 if(isset($_POST['btn_category_submit'])){
-    $name = htmlentities(capitalize($_POST['category_name']));
-    $subcatId = htmlentities($_POST['category_sub_id']);
-    $color = htmlentities($_POST['category_color']);
+    $name = capitalize(Validate::validateString($_POST['category_name']));
+    $subcatId = Validate::validateString($_POST['category_sub_id']);
+    $color = Validate::validateString($_POST['category_color']);
 
     if(isset($_SESSION['update_category'])){
         $dataCategory->updateCategory($_SESSION['update_category']['id'],$name,$subcatId,$color);
@@ -39,8 +39,8 @@ if(isset($_POST['btn_category_submit'])){
 
 
 if(isset($_POST['btn_brand_submit'])){
-    $name = htmlentities(capitalize($_POST['brand_name']));
-    $color = htmlentities($_POST['brand_color']);
+    $name = capitalize(Validate::validateString($_POST['brand_name']));
+    $color = Validate::validateString($_POST['brand_color']);
     $categoryId = (int)$_POST['brand_cat_id'];
     if(isset($_FILES['brand_logo']) && $_FILES['brand_logo']['name'] == ""){
         $fileName = Validate::validateString($_POST['brand_img_str']);
@@ -62,13 +62,13 @@ if(isset($_POST['btn_brand_submit'])){
 
 
 if(isset($_POST['btn_product_submit'])){
-    $productName = htmlentities($_POST['product_name']);
+    $productName = Validate::validateString($_POST['product_name']);
     $productCategoryId = (int)$_POST['product_cat_id'];
     $productBrandId = (int)$_POST['product_brand_id'];
-    $productFeature = nl2br(htmlentities($_POST['product_feature']));
-    $productDesc = nl2br(htmlentities($_POST['product_description']));
+    $productFeature = nl2br(Validate::validateString($_POST['product_feature']));
+    $productDesc = nl2br(Validate::validateString($_POST['product_description']));
     $productPrice = (int)$_POST['product_price'];
-    $productVideo = htmlentities($_POST['product_video']);
+    $productVideo = Validate::validateString($_POST['product_video']);
 
     if(isset($_SESSION['update_product'])){
         if(isset($_FILES['product_imgs']) && $_FILES['product_imgs']['name'][0] != ""){
@@ -162,17 +162,17 @@ if(isset($_GET['btn_update_row'])){
 }
 
 if(isset($_POST['btn_banner_submit'])){
-    $header = htmlentities(trim($_POST['banner_header']));
-    $text = htmlentities(trim($_POST['banner_text']));
+    $header = Validate::validateString($_POST['banner_header']);
+    $text = Validate::validateString($_POST['banner_text']);
     if(isset($_FILES['banner_img']) && $_FILES['banner_img']['name']!=""){
         $img = $fileWorker->uploadOneImg($_FILES['banner_img'],'admin-data');
     }else if(isset($_SESSION['update_banner'])){
         $img = Validate::validateString($_POST['banner_img_str']);
     }
-    $what = htmlentities(trim($_POST['banner_what']));
-    $where = htmlentities(trim($_POST['banner_where']));
-    $when = htmlentities(trim($_POST['banner_when']));
-    $link = htmlentities(trim($_POST['banner_link']));
+    $what = Validate::validateString($_POST['banner_what']);
+    $where = Validate::validateString($_POST['banner_where']);
+    $when = Validate::validateString($_POST['banner_when']);
+    $link = Validate::validateString($_POST['banner_link']);
 
     if(isset($_SESSION['update_banner'])){
         $dataBanner->updateBanner($_SESSION['update_banner']['id'],$header,$text,$img,$what,$where,$when,$link);
