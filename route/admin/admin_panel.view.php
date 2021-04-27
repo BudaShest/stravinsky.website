@@ -37,13 +37,13 @@
                         <div class="row"><?=mb_strcut($_SESSION['update_banner']['what'],0,75) ?></div>
                         <div class="row">
                             <form method="post" action="/route/admin/admin-logic.php">
-                                <button name="btn_update_banner_delete">Удалить</button>
+                                <button name="btn_update_banner_delete">Отменить изменения</button>
                             </form>
                         </div>
                     </div>
                     <?php endif;?>
                 </header>
-                <h2>Основные настройки:</h2>
+                <h2>Настройки рекламы</h2>
                 <form action="/route/admin/admin-logic.php" class="col" method="post" enctype="multipart/form-data">
                     <label for="banner-header-input">Заголовок баннера</label>
                     <input name="banner_header" type="text" id="banner-header-input" required value="<?=$_SESSION['update_banner']['header']??""?>">
@@ -51,10 +51,6 @@
                     <textarea name="banner_text" id="banner-text-input" required><?=$_SESSION['update_banner']['text']??""?></textarea>
                     <label for="banner-img-input">Картинка</label>
                     <input name="banner_img" type="file" id="banner-img-input" <?=!isset($_SESSION['update_banner']['image'])?"required":""?>>
-                    <?php if(isset($_SESSION['update_banner']['image'])):?>
-                    <label for="banner-img-str">Текущее изображение(выберите новое выше или оставьте без именений)</label>
-                    <input type="text" readonly value="<?=$_SESSION['update_banner']['image']??""?>" id="banner-img-str" name="banner_img_str">
-                    <?php endif;?>
                     <label for="banner-what-input">Что(текст)</label>
                     <input name="banner_what" type="text" id="banner-what-input" required  value="<?=$_SESSION['update_banner']['what']??""?>">
                     <label for="banner-where-input">Где(текст)</label>
@@ -126,10 +122,6 @@
                     </select>
                     <label for="brand-logo-input">Логотип бренда</label>
                     <input type="file" id="brand-logo-input" name="brand_logo" accept="image/gif, image/jpeg, image/png, image/pjpeg, image/svg">
-                    <?php if(isset($_SESSION['update_brand']['image'])):?>
-                        <label for="brand-img-str">Текущее изображение(выберите новое выше или оставьте без именений)</label>
-                        <input type="text" readonly value="<?=$_SESSION['update_brand']['image']??""?>" id="brand-img-str" name="brand_img_str">
-                    <?php endif;?>
                     <label for="brand-color-input">Цвет бренда</label>
                     <input type="color" id="brand-color-input" name="brand_color" value="<?=$_SESSION['update_brand']['color']??''?>">
                     <div class="form-template-btns row">
@@ -166,7 +158,7 @@
             <div class="container col">
                 <header>
                     <?php if(isset($_SESSION['update_category'])):?>
-                        <h4>Текующий бренд для редактирования</h4>
+                        <h4>Текующая категория для редактирования</h4>
                         <div class="current-category-update line-row row">
                             <div class="row"><?=$_SESSION['update_category']['name']?></div>
                             <div class="row"><?=mb_strcut($_SESSION['update_category']['sub_name'],0,75)?></div>
@@ -226,7 +218,6 @@
         </section>
         <section id="admin-product-settings" class="row">
             <div class="container col">
-                <?=var_dump($_SESSION['update_product'])?>
                 <header>
                     <?php if(isset($_SESSION['update_product'])):?>
                         <h4>Текующий бренд для редактирования</h4>
@@ -284,13 +275,6 @@
                 <div class="all-records col">
                     <header>
                         <form action="">
-<!--                            <label for="products-cat-query-input">Выберите категорию</label>-->
-<!--                            <select name="products_ajax_prod" id="products-cat-query-input">-->
-<!--                                <option selected value="all">Все категории</option>-->
-<!--                                --><?php //foreach($categories as $category):?>
-<!--                                    <option value="--><?//=$category->id?><!--">--><?//=$category->name?><!--</option>-->
-<!--                                --><?php //endforeach;?>
-<!--                            </select>-->
                             <label for="products-brand-query-input">Выберите бренд</label>
                             <select name="products_ajax_prod" id="products-brand-query-input">
                                 <option selected value="all">Все бренды</option>

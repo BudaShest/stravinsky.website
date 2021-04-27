@@ -43,7 +43,7 @@ if(isset($_POST['btn_brand_submit'])){
     $color = Validate::validateString($_POST['brand_color']);
     $categoryId = (int)$_POST['brand_cat_id'];
     if(isset($_FILES['brand_logo']) && $_FILES['brand_logo']['name'] == ""){
-        $fileName = Validate::validateString($_POST['brand_img_str']);
+        $fileName = $_SESSION['update_brand']['image'];
     }else{
         $fileName = $fileWorker->uploadOneImg($_FILES['brand_logo'],'admin-data');
     }
@@ -167,7 +167,7 @@ if(isset($_POST['btn_banner_submit'])){
     if(isset($_FILES['banner_img']) && $_FILES['banner_img']['name']!=""){
         $img = $fileWorker->uploadOneImg($_FILES['banner_img'],'admin-data');
     }else if(isset($_SESSION['update_banner'])){
-        $img = Validate::validateString($_POST['banner_img_str']);
+        $img = $_SESSION['update_banner']['image'];
     }
     $what = Validate::validateString($_POST['banner_what']);
     $where = Validate::validateString($_POST['banner_where']);
