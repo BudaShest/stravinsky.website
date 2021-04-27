@@ -34,18 +34,16 @@ if(isset($_POST['btn_category_submit'])){
 
 
 if(isset($_POST['btn_brand_submit'])){
-    if($_FILES){
-        $fileName = $fileWorker->uploadOneImg($_FILES['brand_logo'],'admin-data');
-    }else{
-        $fileName = "default-img.jpg";
-    }
     $name = htmlentities(capitalize($_POST['brand_name']));
     $color = htmlentities($_POST['brand_color']);
     $categoryId = (int)$_POST['brand_cat_id'];
+    if(isset($_FILES['brand_logo']) && $_FILES['brand_logo']['name'] == ""){
+        $fileName = Validate::validateString($_POST['brand_img_str']);
+    }else{
+        $fileName = $fileWorker->uploadOneImg($_FILES['brand_logo'],'admin-data');
+    }
+
     if(isset($_SESSION['update_brand'])){
-        if(!isset($_FILES['brand_logo'])){
-            $fileName = Validate::validateString($_POST['brand_img_str']);
-        }
         $dataBrand->updateBrand($_SESSION['update_brand']['id'],$name,$categoryId,$fileName,$color);
         unset($_SESSION['update_brand']);
     }else{
@@ -128,7 +126,8 @@ if(isset($_GET['btn_update_row'])){
             $_SESSION['update_brand'] = $brandRecord;
             break;
         case "admin-category-settings":
-
+            $categoryRecord = $dataCategory->searchRecord($_GET['context_table_id'],true);
+            $_SESSION['update_category'] = $categoryRecord;
             break;
         case "admin-product-settings":
 
@@ -142,22 +141,23 @@ if(isset($_GET['btn_update_row'])){
             break;
 
     }
-    header('Location: /route/admin');
+//    header('Location: /route/admin');
 }
 
 if(isset($_POST['btn_banner_submit'])){
     $header = htmlentities(trim($_POST['banner_header']));
     $text = htmlentities(trim($_POST['banner_text']));
-    $img = $fileWorker->uploadOneImg($_FILES['banner_img'],'admin-data');
+    if(isset($_FILES['banner_img']) && $_FILES['banner_img']['name']!=""){
+        $img = $fileWorker->uploadOneImg($_FILES['banner_img'],'admin-data');
+    }else if(isset($_SESSION['update_banner'])){
+        $img = Validate::validateString($_POST['banner_img_str']);
+    }
     $what = htmlentities(trim($_POST['banner_what']));
     $where = htmlentities(trim($_POST['banner_where']));
     $when = htmlentities(trim($_POST['banner_when']));
     $link = htmlentities(trim($_POST['banner_link']));
 
     if(isset($_SESSION['update_banner'])){
-        if(!isset($_FILES['banner_img'])){
-            $img = Validate::validateString($_POST['banner_img_str']);
-        }
         $dataBanner->updateBanner($_SESSION['update_banner']['id'],$header,$text,$img,$what,$where,$when,$link);
         unset($_SESSION['update_banner']);
     }else{

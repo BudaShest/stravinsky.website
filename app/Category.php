@@ -23,9 +23,14 @@ class Category
     }
 
 
-    public function searchRecord()
+    public function searchRecord(int $categoryId, bool $assoc=false)
     {
-        // TODO: Implement searchRecord() method.
+        $stmt = $this->pdo->prepare('SELECT c.id,c.name,c.sub_category_id,c.color,s.name as sub_name FROM categories c INNER JOIN subcategories s on c.sub_category_id = s.id WHERE c.id = :category_id');
+        $stmt->execute([':category_id'=>$categoryId]);
+        if($assoc){
+            return $stmt->fetch(PDO::FETCH_ASSOC);
+        }
+        return $stmt->fetch();
     }
 
     public function insertRecord(string $name,int $subcategory_id, string $color):void

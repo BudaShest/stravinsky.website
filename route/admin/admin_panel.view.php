@@ -64,7 +64,11 @@
                     <label for="banner-link-select">Ссылка на продукт</label>
                     <select name="banner_link" id="banner-link-select" required>
                         <?php foreach ($products as $product):?>
-                            <option value="<?=$_SESSION['update_banner']['link']??$product->id?>"><?=$_SESSION['update_banner']['link']??$product->name?></option>
+                            <?php if(isset($_SESSION['update_banner'])):?>
+                                <option <?=$_SESSION['update_banner']['link']==$product->id?"selected":""?> value="<?=$product->id?>"><?=$product->name?></option>
+                            <?php else:?>
+                                <option value="<?=$product->id?>"><?=$product->name?></option>
+                            <?php endif;?>
                         <?php endforeach;?>
                     </select>
                     <div class="form-template-btns row">
@@ -160,18 +164,38 @@
         </section>
         <section id="admin-category-settings" class="row">
             <div class="container col">
+                <?php var_dump($_SESSION['update_category']); ?>
+                <header>
+                    <?php if(isset($_SESSION['update_category'])):?>
+                        <h4>Текующий бренд для редактирования</h4>
+                        <div class="current-category-update line-row row">
+                            <div class="row"><?=$_SESSION['update_category']['name']?></div>
+                            <div class="row"><?=mb_strcut($_SESSION['update_category']['sub_name'],0,75)?></div>
+                            <div class="row"><?=mb_strcut($_SESSION['update_category']['color'],0,75) ?></div>
+                            <div class="row">
+                                <form method="post" action="/route/admin/admin-logic.php">
+                                    <button name="btn_update_category_delete">Удалить</button>
+                                </form>
+                            </div>
+                        </div>
+                    <?php endif;?>
+                </header>
                 <h2>Настройки категорий:</h2>
                 <form action="/route/admin/admin-logic.php" class="col" method="POST">
                     <label for="category-name-input">Название категории:</label>
-                    <input type="text" id="category-name-input" name="category_name">
+                    <input type="text" id="category-name-input" name="category_name" value="<?=$_SESSION['update_category']['name']??""?>">
                     <label for="category-sub-select">Подкатегория:</label>
                     <select id="category-sub-select" name="category_sub_id">
                         <?php foreach ($subcategories as $subcategory):?>
-                            <option value="<?=$subcategory->id?>"><?=$subcategory->name?></option>
+                            <?php if(isset($_SESSION['update_category'])):?>
+                                <option value="<?=$subcategory->id?>"><?=$subcategory->name?></option>
+                            <?php else:?>
+                                <option <?=$_SESSION['update_category']['id']==$subcategory->id?"selected":""?> value="<?=$subcategory->id?>"><?=$subcategory->name?></option>
+                            <?php endif;?>
                         <?php endforeach;?>
                     </select>
                     <label for="category-color-input">Цвет категории</label>
-                    <input type="color" id="category-color-input" name="category_color" value="#000000">
+                    <input type="color" id="category-color-input" name="category_color" value="<?=$_SESSION['update_category']['color']??'#000000'?>">
                     <div class="form-template-btns row">
                         <button type="submit" class="btn-postive" name="btn_category_submit">Отправить</button>
                         <button type="reset" class="btn-negative">Стереть</button>
