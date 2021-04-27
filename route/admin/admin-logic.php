@@ -70,15 +70,25 @@ if(isset($_POST['btn_product_submit'])){
     $productPrice = (int)$_POST['product_price'];
     $productVideo = htmlentities($_POST['product_video']);
 
-    $uploadedFiles = $fileWorker->uploadMultiImgs($_FILES['product_imgs'], 'admin-data');
+    if(isset($_SESSION['update_product'])){
+        if(isset($_FILES['product_imgs']) && $_FILES['product_imgs']['name'][0] != ""){
+            $uploadedFiles = $fileWorker->uploadMultiImgs($_FILES['product_imgs'], 'admin-data');
+        }else{
+            $uploadedFiles = $_SESSION['update_product']['images'];
+        }
+        $dataProduct->updateProduct($_SESSION['update_product']['id'],$productBrandId,$productCategoryId,$productName,$productFeature,$productDesc,$productPrice,$_SESSION['update_product']['rating'],$productVideo,$uploadedFiles);
+        unset($_SESSION['update_product']);
+    }else{
+        $uploadedFiles = $fileWorker->uploadMultiImgs($_FILES['product_imgs'], 'admin-data');
+        $dataProduct->insertRecord($productBrandId, $productCategoryId,$productName,$productFeature,$productDesc,$productPrice,$productVideo,$uploadedFiles);
 
-    $dataProduct->insertRecord($productBrandId, $productCategoryId,$productName,$productFeature,$productDesc,$productPrice,$productVideo,$uploadedFiles);
+    }
 
     //TODO Вот эта часть нужна для отправки писем. Она работает, но необходимо сделать подтверждение maila
-    $users = $dataUser->getAllRecords();
-    foreach ($users as $user){
-        sendMail($user->email,"{$productName}", "На наш сайт был доавблен новый товар");
-    }
+//    $users = $dataUser->getAllRecords();
+//    foreach ($users as $user){
+//        sendMail($user->email,"{$productName}", "На наш сайт был доавблен новый товар");
+//    }
 
     header('Location: /route/admin');
 
@@ -135,7 +145,9 @@ if(isset($_GET['btn_update_row'])){
             $_SESSION['update_category'] = $categoryRecord;
             break;
         case "admin-product-settings":
-
+            $productRecord = $dataProduct->getOneProduct($_GET['context_table_id'],true);
+            $_SESSION['update_product'] = $productRecord;
+            $_SESSION['update_product']['images'] = $dataProduct->getImageName($_GET['context_table_id']);
             break;
         case "admin-users-settings":
 
@@ -146,7 +158,7 @@ if(isset($_GET['btn_update_row'])){
             break;
 
     }
-//    header('Location: /route/admin');
+    header('Location: /route/admin');
 }
 
 if(isset($_POST['btn_banner_submit'])){
@@ -185,6 +197,11 @@ if(isset($_POST['btn_update_brand_delete'])){
 
 if(isset($_POST['btn_update_category_delete'])){
     unset($_SESSION['update_category']);
+    header('Location: /route/admin');
+}
+
+if(isset($_POST['btn_update_product_delete'])){
+    unset($_SESSION['update_product']);
     header('Location: /route/admin');
 }
 

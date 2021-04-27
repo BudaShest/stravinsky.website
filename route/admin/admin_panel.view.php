@@ -226,32 +226,56 @@
         </section>
         <section id="admin-product-settings" class="row">
             <div class="container col">
+                <?=var_dump($_SESSION['update_product'])?>
+                <header>
+                    <?php if(isset($_SESSION['update_product'])):?>
+                        <h4>Текующий бренд для редактирования</h4>
+                        <div class="current-category-update line-row row">
+                            <div class="row"><?=$_SESSION['update_product']['name']?></div>
+                            <div class="row"><?=mb_strcut($_SESSION['update_product']['cat_name'],0,75)?></div>
+                            <div class="row"><?=mb_strcut($_SESSION['update_product']['price'],0,75) ?></div>
+                            <div class="row">
+                                <form method="post" action="/route/admin/admin-logic.php">
+                                    <button name="btn_update_product_delete">Удалить</button>
+                                </form>
+                            </div>
+                        </div>
+                    <?php endif;?>
+                </header>
                 <h2>Настройки товара:</h2>
                 <form action="/route/admin/admin-logic.php" class="col" method="post" enctype="multipart/form-data">
                     <label for="product-name-input">Название товара:</label>
-                    <input type="text" id="product-name-input" name="product_name">
+                    <input type="text" id="product-name-input" name="product_name" value="<?=$_SESSION['update_product']['name']??""?>">
                     <label for="product-category-input">Категория:</label>
                     <select name="product_cat_id" id="product-category-input">
                         <?php foreach ($categories as $category):?>
-                            <option value="<?=$category->id?>"><?=$category->name?></option>
+                            <?php if(isset($_SESSION['update_product'])):?>
+                                <option <?=$_SESSION['update_product']['category_id']==$category->id?"selected":""?> value="<?=$category->id?>"><?=$category->name?></option>
+                            <?php else:?>
+                                <option value="<?=$category->id?>"><?=$category->name?></option>
+                            <?php endif;?>
                         <?php endforeach; ?>
                     </select>
                     <label for="product-brand-input">Бренд-прозводитель:</label>
                     <select name="product_brand_id" id="product-brand-input">
                         <?php foreach($brands as $brand): ?>
-                            <option value="<?=$brand->id?>"><?=$brand->name?></option>
+                            <?php if(isset($_SESSION['update_product'])): ?>
+                                <option <?=$_SESSION['update_product']['brand_id']==$brand->id?"selected":""?> value="<?=$brand->id?>"><?=$brand->name?></option>
+                            <?php else:?>
+                                <option value="<?=$brand->id?>"><?=$brand->name?></option>
+                            <?php endif;?>
                         <?php endforeach; ?>
                     </select>
                     <label for="product-imgs-input">Изображения:</label>
                     <input type="file" id="product-imgs-input" name="product_imgs[]" multiple accept="image/gif, image/jpeg, image/png, image/pjpeg, image/svg+xml">
                     <label for="product-video-input">Видео</label>
-                    <input type="text" id="product-video-input" name="product_video">
+                    <input type="text" id="product-video-input" name="product_video" value="<?=$_SESSION['update_product']['video']??""?>">
                     <label for="product-feature-input">Характеристики</label>
-                    <textarea wrap="hard" name="product_feature" id="product-feature-input" cols="30" rows="10"></textarea>
+                    <textarea wrap="hard" name="product_feature" id="product-feature-input" cols="30" rows="10"><?=$_SESSION['update_product']['feature']??""?></textarea>
                     <label for="product-description-input">Описание:</label>
-                    <textarea wrap="hard" name="product_description" id="product-description-input" cols="30" rows="10"></textarea>
+                    <textarea wrap="hard" name="product_description" id="product-description-input" cols="30" rows="10"><?=$_SESSION['update_product']['description']??""?></textarea>
                     <label for="product-price-input">Цена:</label>
-                    <input type="number" id="product-price-input" name="product_price">
+                    <input type="number" id="product-price-input" name="product_price" value="<?=$_SESSION['update_product']['price']??""?>">
                     <div class="form-template-btns row">
                         <button type="submit" class="btn-postive" name="btn_product_submit">Отправить</button>
                         <button type="reset" class="btn-negative">Стереть</button>

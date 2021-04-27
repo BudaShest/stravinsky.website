@@ -51,14 +51,14 @@ class Product
         return $stmt->fetchAll();
     }
 
-    public function insertRecord($brand_id, $category_id, $name, $feature, $description, $price, $video, $imgs)
+    public function insertRecord($brand_id, $categoryId, $name, $feature, $description, $price, $video, $imgs)
     {
         $stmt = $this->pdo->prepare('INSERT INTO products (brand_id, category_id, name, feature, description, price, video) 
                                             VALUES (:brand_id, :category_id, :name, :feature, :description, :price, :video)');
 
         $stmt->execute([
             ":brand_id"=>$brand_id,
-            ":category_id"=>$category_id,
+            ":category_id"=>$categoryId,
             ":name"=>$name,
             ":feature"=>$feature,
             ":description"=>$description,
@@ -83,7 +83,14 @@ class Product
         }
     }
 
-
+    public function updateProductImgs(int $productId, array $imgs)
+    {
+        $stmt = $this->pdo->prepare('DELETE FROM products_imgs WHERE product_id=:product_id');
+        $stmt->execute([
+            ':product_id'=>$productId,
+        ]);
+        $this->insertProductImgs($productId,$imgs);
+    }
 
     public function getProductsTop($limit=null):array
     {
@@ -104,11 +111,31 @@ class Product
 
 
 
-    public function getOneProduct(int $productId)
+    public function getOneProduct(int $productId, bool $assoc=false)
     {
-        $stmt = $this->pdo->prepare('SELECT p.id,p.name,p.description,p.feature,p.video,p.rating,p.price,c.name as cat_name FROM products p INNER JOIN categories c on p.category_id = c.id WHERE p.id = :id');
+        $stmt = $this->pdo->prepare('SELECT p.id,p.brand_id,p.category_id,p.name,p.description,p.feature,p.video,p.rating,p.price,c.name as cat_name FROM products p INNER JOIN categories c on p.category_id = c.id WHERE p.id = :id');
         $stmt->execute(['id'=>$productId]);
+        if($assoc){
+            return $stmt->fetch(PDO::FETCH_ASSOC);
+        }
         return $stmt->fetch();
+
+    }
+
+    public function updateProduct(int $productId,int $brandId, $categoryId, $name, $feature, $description, $price, $rating, $video, $imgs){
+        $stmt = $this->pdo->prepare('UPDATE products SET brand_id = :brand_id, category_id = :category_id, name = :name, feature = :feature, description = :description, price = :price, rating = :rating, video = :video WHERE id=:product_id');
+        $stmt->execute([
+            ':brand_id'=>$brandId,
+            ':category_id'=>$categoryId,
+            ':name'=>$name,
+            ':feature'=>$feature,
+            ':description'=>$description,
+            ':price'=>$price,
+            ':rating'=>$rating,
+            ':video'=>$video,
+            ':product_id'=>$productId
+        ]);
+        $this->updateProductImgs($productId, $imgs);
 
     }
 
@@ -116,7 +143,6 @@ class Product
     {
         // TODO: Implement searchRecord() method.
     }
-
 
 
 }
