@@ -1,7 +1,7 @@
 <div class="mobile-menu-modal col">
     <header class="row">
         <?php include $_SERVER['DOCUMENT_ROOT'] . "/templates/current-user.view.php" ?>
-        <button id="admin-modal-close" class="close-btn">&#11198;</button>
+        <button id="admin-modal-close" class="close-btn"><img src="/imgs/togglers/close-button-png-30230.png" alt="Закрыть меню"></button>
     </header>
     <div class="mobile-menu-grid">
         <a href="/route/payment" class="col"><img src="/imgs/links/delivery-and-payment.png" alt="Заказ и оплата"><span>Заказ и оплата</span></a>

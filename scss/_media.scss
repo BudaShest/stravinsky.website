@@ -114,6 +114,32 @@
       .container{
         padding: 14px;
       }
+      .also-like{
+        flex-wrap: wrap;
+      }
+      .user-applications{
+        .user-application{
+          flex-wrap: wrap;
+          border-bottom: 2px solid $purple-col;
+          >*{
+            padding: 10px;
+          }
+        }
+      }
+      .basket-container{
+        .basket-product{
+          flex-wrap: wrap;
+          >*{
+            padding: 5px;
+            min-height: 50px;
+          }
+        }
+        form{
+          .form-template-btns{
+            flex-direction: column;
+          }
+        }
+      }
       .one-product{
         .text-drop{
           border-bottom: 20px solid $main-col;
@@ -140,7 +166,7 @@
           max-width: 100vw;
           flex-wrap: wrap;
           .one-product-feature{
-
+            overflow: hidden;
           }
           #one-product-main-img{
             width: 100%;
@@ -163,6 +189,9 @@
         grid-template-columns: 1fr;
         div{
           max-width: 80vw;
+          img{
+            max-width: 100%;
+          }
         }
       }
     }
