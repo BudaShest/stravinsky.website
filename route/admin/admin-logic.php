@@ -22,11 +22,16 @@ function checkName($dataHandler,$name, $tableName){
 
 if(isset($_POST['btn_category_submit'])){
     $name = htmlentities(capitalize($_POST['category_name']));
-    if(!checkName($dataCategory, $name, "categories")){
-        $subcatId = htmlentities($_POST['category_sub_id']);
-        $color = htmlentities($_POST['category_color']);
-        $dataCategory->insertRecord($name, (int)$subcatId, $color); //TODO Сделать проверку на существование и если что не добавлять!
-        //TODO СЕССИЯ И СООБЩЕНИЯ ОБ УДАЧНОМ СОЗДАНИИ ИЛИ ОШИБКЕ
+    $subcatId = htmlentities($_POST['category_sub_id']);
+    $color = htmlentities($_POST['category_color']);
+
+    if(isset($_SESSION['update_category'])){
+        $dataCategory->updateCategory($_SESSION['update_category']['id'],$name,$subcatId,$color);
+        unset($_SESSION['update_category']);
+    }else{
+        if(!checkName($dataCategory, $name, "categories")){
+            $dataCategory->insertRecord($name, (int)$subcatId, $color);
+        }
     }
     header('Location: /route/admin');
 
@@ -174,6 +179,12 @@ if(isset($_POST['btn_update_banner_delete'])){
 
 if(isset($_POST['btn_update_brand_delete'])){
     unset($_SESSION['update_brand']);
+    header('Location: /route/admin');
+}
+
+
+if(isset($_POST['btn_update_category_delete'])){
+    unset($_SESSION['update_category']);
     header('Location: /route/admin');
 }
 

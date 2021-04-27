@@ -33,12 +33,22 @@ class Category
         return $stmt->fetch();
     }
 
-    public function insertRecord(string $name,int $subcategory_id, string $color):void
+    public function updateCategory(int $categoryId, string $name,int $subcategoryId, string $color){
+        $stmt = $this->pdo->prepare('UPDATE categories SET name = :name,sub_category_id = :sub_category_id, color = :color WHERE categories.id = :category_id');
+        $stmt->execute([
+            ':name'=>$name,
+            ':sub_category_id'=>$subcategoryId,
+            ':color'=>$color,
+            ':category_id'=>$categoryId
+        ]);
+    }
+
+    public function insertRecord(string $name,int $subcategoryId, string $color):void
     {
         $stmt = $this->pdo->prepare('INSERT INTO categories (name, sub_category_id, color) VALUES (:name, :subcategory_id, :color)');
         $stmt->execute([
            ":name"=> $name,
-            ":subcategory_id"=>$subcategory_id,
+            ":subcategory_id"=>$subcategoryId,
             ":color"=>$color,
         ]);
 

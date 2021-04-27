@@ -164,7 +164,6 @@
         </section>
         <section id="admin-category-settings" class="row">
             <div class="container col">
-                <?php var_dump($_SESSION['update_category']); ?>
                 <header>
                     <?php if(isset($_SESSION['update_category'])):?>
                         <h4>Текующий бренд для редактирования</h4>
@@ -188,9 +187,9 @@
                     <select id="category-sub-select" name="category_sub_id">
                         <?php foreach ($subcategories as $subcategory):?>
                             <?php if(isset($_SESSION['update_category'])):?>
-                                <option value="<?=$subcategory->id?>"><?=$subcategory->name?></option>
+                                <option <?=$_SESSION['update_category']['sub_category_id']==$subcategory->id?"selected":""?> value="<?=$subcategory->id?>"><?=$subcategory->name?></option>
                             <?php else:?>
-                                <option <?=$_SESSION['update_category']['id']==$subcategory->id?"selected":""?> value="<?=$subcategory->id?>"><?=$subcategory->name?></option>
+                                <option value="<?=$subcategory->id?>"><?=$subcategory->name?></option>
                             <?php endif;?>
                         <?php endforeach;?>
                     </select>
