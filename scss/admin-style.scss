@@ -224,11 +224,3 @@
 }
 
 
-@media screen and(max-width: 1001px){
-  .admin-wrapper{
-    grid-template-columns: repeat(4, 1fr);
-  }
-  .header, .main, .footer{
-    grid-column: 1/5 !important;
-  }
-}

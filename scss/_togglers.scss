@@ -30,6 +30,10 @@
 .text-drop-active{
   height: auto !important;
   transition: all 0.3s ease-out;
+  img{
+    transform: rotate(180deg);
+    transition: all 0.3s ease-out;
+  }
 }
 .review-imgs-active{
   transition:all 0.3s ease-out;

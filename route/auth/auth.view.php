@@ -52,11 +52,11 @@
                         <label for="user-email-input">Email:</label>
                         <span></span>
                         <input type="email" name="user_email" id="user-email-input">
-                        <div class="email-register-confirm col">
-                            <label for="user-email-code">Код подтвеждения</label>
-                            <input type="text" name="user_email_code_confirm" id="user-code-confirm" placeholder="Введите код подвтерждения">
-                            <input name="user_email_code" type="text" id="user-email-code" readonly hidden>
-                        </div>
+<!--                        <div class="email-register-confirm col">-->
+<!--                            <label for="user-email-code">Код подтвеждения</label>-->
+<!--                            <input type="text" name="user_email_code_confirm" id="user-code-confirm" placeholder="Введите код подвтерждения">-->
+<!--                            <input name="user_email_code" type="text" id="user-email-code" readonly hidden>-->
+<!--                        </div>-->
                         <label for="user-password-input">Пароль:</label>
                         <span></span>
                         <input type="password" name="user_password" id="user-password-input" required>

@@ -1,9 +1,6 @@
 let catalogToggler = document.querySelector('#catalog-toggler');
 let catalog = document.querySelector('.catalog');
 
-// let userInfoToggler = document.querySelector('.current-user-info');
-// let userInfoForm = document.querySelector('.user-info-form');
-
 let lightBtn = document.querySelector('#light-mode-btn');
 
 let aboutMsgs = document.querySelectorAll('.about-msg');
@@ -26,7 +23,6 @@ let oneProductSumPrice = document.querySelector('#one-product-sum-price');
 if(productNumInput!==null && productPrice!==null ** oneProductSumPrice!==null){
    productNumInput.addEventListener('change',function (){
       oneProductSumPrice.textContent = productPrice.textContent * this.value;
-
    });
 }
 
@@ -38,8 +34,11 @@ if(reviewsImgsTogglers.length>0){
 
 
 if(textDropElements.length>0){
-   textDropElements.forEach(item=>item.addEventListener('click',function (){
-      item.classList.toggle('text-drop-active');
+   textDropElements.forEach(item=>item.addEventListener('click',function (e){
+      if(e.target.tagName == 'HEADER' || e.target.tagName == 'H4'){
+         item.classList.toggle('text-drop-active');
+      }
+
    }));
 }
 
@@ -91,13 +90,6 @@ if(aboutMsgs.length > 0){
    });
 }
 
-// if(lightBtn!==null){
-//    lightBtn.addEventListener('click',function (){
-//       let music = new Audio('/media/dubstep.mp3');
-//       music.play();
-//       document.querySelectorAll('*').forEach(item=>item.classList.toggle('crazy'));
-//    });
-// }
 
 if(miniImgs.length>0 && mainImg!==null){
    miniImgs.forEach(item=>item.addEventListener('click',function(){

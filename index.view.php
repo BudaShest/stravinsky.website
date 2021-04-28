@@ -123,10 +123,10 @@
             <h2>Контакты</h2>
             <div class="container col">
                 <div class="row all-links">
-                    <a href=""><img src="imgs/links/vk.png" alt=""></a>
-                    <a href=""><img src="imgs/links/fb.png" alt=""></a>
-                    <a href=""><img src="imgs/links/inst.png" alt=""></a>
-                    <a href=""><img src="imgs/links/tg.png" alt=""></a>
+                    <a target="_blank" href="https://vk.com/stravinsky_music"><img src="imgs/links/vk.png" alt="Ссылка на вк"></a>
+                    <a target="_blank" href="#"><img src="imgs/links/fb.png" alt="Ссылка на фейсбук"></a>
+                    <a target="_blank" href="https://www.instagram.com/stravinsky.music_shop/"><img src="imgs/links/inst.png" alt="Ссылка на инстаграмм"></a>
+                    <a target="_blank" href="#"><img src="imgs/links/tg.png" alt="Ссылка на телеграм"></a>
                 </div>
                 <div class="row main-phone">
                     <div class="col">

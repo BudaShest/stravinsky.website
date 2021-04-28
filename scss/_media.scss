@@ -1,4 +1,19 @@
+@media screen and(max-width: 1001px){
+  .admin-wrapper{
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .header, .main, .footer{
+    grid-column: 1/5 !important;
+  }
+}
+
 @media screen and(max-width: 1024px){
+  .mobile-menu-modal{
+    .mobile-menu-grid{
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+    }
+  }
   .wrapper{
     grid-template-columns: repeat(4,1fr);
     overflow: hidden;
@@ -39,9 +54,21 @@
     .catalog{
       padding: 10px 25px;
       .container{
+        overflow: hidden;
         .cat{
+          padding: 4px;
           #mobile-supercat-menu{
             display: block;
+          }
+          .row{
+            >*{
+              width: 100%;
+            }
+            ul{
+              padding: 10px 0;
+              overflow: scroll;
+              flex-wrap: nowrap;
+            }
           }
           width: 100%;
         }
@@ -51,11 +78,14 @@
       }
     }
     .brands{
+      margin: 25px 0;
       .container{
         flex-wrap: wrap;
         height: auto;
         .brand{
-          margin:15px 0;
+          margin:15px;
+          width: 120px;
+          height: 120px;
         }
       }
     }
@@ -69,6 +99,7 @@
           margin:10px 0;
           a{
             @include center-flex();
+            margin:10px 0;
           }
         }
         .advert-text{
@@ -110,7 +141,9 @@
 
   .wrapper-catalog{
     overflow: hidden;
+
     .main{
+      grid-column: 1/5;
       .container{
         padding: 14px;
       }
@@ -127,11 +160,21 @@
         }
       }
       .basket-container{
+
         .basket-product{
           flex-wrap: wrap;
           >*{
             padding: 5px;
             min-height: 50px;
+          }
+        }
+        footer{
+          form{
+            .form-template-btns{
+              button{
+                width: 100% !important;
+              }
+            }
           }
         }
         form{
@@ -141,17 +184,19 @@
         }
       }
       .one-product{
+
         .text-drop{
-          border-bottom: 20px solid $main-col;
-          height: 50px;
+          height: 70px;
           overflow: hidden;
           margin: 10px;
           header{
-            height: 40px;
-            @include center-flex();
+            padding: 14px;
+            height: 70px;
+            justify-content: center;
             background-color: $main-col;
             width: 100%;
             img{
+              display: block;
               width: 15px;
               height: 15px;
               margin-left: 10px;
@@ -167,9 +212,11 @@
           flex-wrap: wrap;
           .one-product-feature{
             overflow: hidden;
+            padding: 0;
           }
           #one-product-main-img{
             width: 100%;
+            height: 350px;
           }
           >*{
             width: 100%;
@@ -178,19 +225,29 @@
         iframe{
           width: 100%;
         }
+
       }
       .one-product-rev{
+        margin: 15px 0;
         .also-like{
           display: none;
+        }
+        >*{
+          width: 100%;
+          min-width: unset;
         }
       }
       .grid-payment{
         grid-template-rows: repeat(4,1fr);
         grid-template-columns: 1fr;
         div{
+          padding: 14px;
           max-width: 80vw;
+          max-height: 300px;
+          overflow: hidden;
           img{
             max-width: 100%;
+            max-height: 100%;
           }
         }
       }
@@ -202,6 +259,14 @@
   }
   .wrapper-main{
     overflow: hidden;
+    .main{
+      .rotating{
+        width: 90%;
+      }
+      form{
+        width: 100%;
+      }
+    }
   }
 
   .admin-wrapper{
@@ -236,6 +301,15 @@
           max-width: 100%;
         }
       }
+    }
+  }
+}
+
+@media screen and(max-width:600px){
+  .mobile-menu-modal{
+    .mobile-menu-grid{
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr 1fr;
     }
   }
 }

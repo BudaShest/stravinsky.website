@@ -289,15 +289,6 @@
   transition: all 0.3s ease-out;
 }
 
-@media screen and (max-width: 1001px) {
-  .admin-wrapper {
-    grid-template-columns: repeat(4, 1fr);
-  }
-
-  .header, .main, .footer {
-    grid-column: 1/5 !important;
-  }
-}
 *, *:before, *:after {
   box-sizing: border-box;
   margin: 0;
@@ -369,6 +360,7 @@ button:hover {
 }
 .mobile-menu-modal header .close-btn img {
   max-width: 100%;
+  max-height: 100%;
 }
 .mobile-menu-modal header .current-user-info {
   z-index: 2;
@@ -424,6 +416,7 @@ button:hover {
   border-radius: 15px;
   text-decoration: none;
   box-shadow: 1px 2px 3px 0 rgba(0, 0, 0, 0.3);
+  font-size: 1.3em;
 }
 .mobile-menu-modal header #login-btn:hover {
   transform: translateY(-3px);
@@ -433,8 +426,6 @@ button:hover {
 .mobile-menu-modal .mobile-menu-grid {
   height: 80%;
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr;
   grid-gap: 10px;
 }
 .mobile-menu-modal .mobile-menu-grid a {
@@ -443,7 +434,7 @@ button:hover {
   justify-content: space-evenly;
 }
 .mobile-menu-modal .mobile-menu-grid a img {
-  width: 70%;
+  width: 65%;
 }
 .mobile-menu-modal .mobile-menu-grid a span {
   font-size: 1.1em;
@@ -644,6 +635,7 @@ button:hover {
   width: 100%;
 }
 .wrapper .banner {
+  -webkit-background-size: cover;
   background-image: url("../imgs/banner2.jpg");
   height: 600px;
   background-attachment: fixed;
@@ -708,7 +700,9 @@ button:hover {
   align-items: center;
 }
 .wrapper .catalog .cat #mobile-supercat-menu {
-  padding: 7px;
+  padding: 4px;
+  margin: 10px;
+  max-width: 250px;
   font-size: 1.05em;
   border: 2px solid #3E6FB9;
   display: none;
@@ -1178,6 +1172,9 @@ button:hover {
 .wrapper-catalog .main .grid-payment div img {
   height: 100%;
 }
+.wrapper-catalog .main .grid-payment div h3 {
+  padding: 14px;
+}
 .wrapper-catalog .main .catalog-products {
   width: 100%;
   border: 2px solid #E56CCF;
@@ -1370,6 +1367,12 @@ button:hover {
   align-items: center;
   margin: 14px 0;
 }
+.wrapper-catalog .main .one-product-rev .one-product-reviews {
+  padding: 14px 0;
+}
+.wrapper-catalog .main .one-product-rev .one-product-reviews h3 {
+  margin: 14px 0;
+}
 .wrapper-catalog .main .one-product-rev .one-product-reviews .review {
   justify-content: space-between;
   align-items: center;
@@ -1518,7 +1521,21 @@ button:hover {
   padding: 6px;
 }
 
+@media screen and (max-width: 1001px) {
+  .admin-wrapper {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .header, .main, .footer {
+    grid-column: 1/5 !important;
+  }
+}
 @media screen and (max-width: 1024px) {
+  .mobile-menu-modal .mobile-menu-grid {
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+  }
+
   .wrapper {
     grid-template-columns: repeat(4, 1fr);
     overflow: hidden;
@@ -1556,21 +1573,38 @@ button:hover {
   .wrapper .catalog {
     padding: 10px 25px;
   }
+  .wrapper .catalog .container {
+    overflow: hidden;
+  }
   .wrapper .catalog .container .cat {
+    padding: 4px;
     width: 100%;
   }
   .wrapper .catalog .container .cat #mobile-supercat-menu {
     display: block;
   }
+  .wrapper .catalog .container .cat .row > * {
+    width: 100%;
+  }
+  .wrapper .catalog .container .cat .row ul {
+    padding: 10px 0;
+    overflow: scroll;
+    flex-wrap: nowrap;
+  }
   .wrapper .catalog .container .sub-cat {
     display: none;
+  }
+  .wrapper .brands {
+    margin: 25px 0;
   }
   .wrapper .brands .container {
     flex-wrap: wrap;
     height: auto;
   }
   .wrapper .brands .container .brand {
-    margin: 15px 0;
+    margin: 15px;
+    width: 120px;
+    height: 120px;
   }
   .wrapper .advert .container {
     flex-wrap: wrap;
@@ -1584,6 +1618,7 @@ button:hover {
   .wrapper .advert .container .advert-img-block a {
     align-items: center;
     justify-content: center;
+    margin: 10px 0;
   }
   .wrapper .advert .container .advert-text {
     align-items: center;
@@ -1613,6 +1648,9 @@ button:hover {
   .wrapper-catalog {
     overflow: hidden;
   }
+  .wrapper-catalog .main {
+    grid-column: 1/5;
+  }
   .wrapper-catalog .main .container {
     padding: 14px;
   }
@@ -1633,23 +1671,26 @@ button:hover {
     padding: 5px;
     min-height: 50px;
   }
+  .wrapper-catalog .main .basket-container footer form .form-template-btns button {
+    width: 100% !important;
+  }
   .wrapper-catalog .main .basket-container form .form-template-btns {
     flex-direction: column;
   }
   .wrapper-catalog .main .one-product .text-drop {
-    border-bottom: 20px solid #f3f3f3;
-    height: 50px;
+    height: 70px;
     overflow: hidden;
     margin: 10px;
   }
   .wrapper-catalog .main .one-product .text-drop header {
-    height: 40px;
-    align-items: center;
+    padding: 14px;
+    height: 70px;
     justify-content: center;
     background-color: #f3f3f3;
     width: 100%;
   }
   .wrapper-catalog .main .one-product .text-drop header img {
+    display: block;
     width: 15px;
     height: 15px;
     margin-left: 10px;
@@ -1664,9 +1705,11 @@ button:hover {
   }
   .wrapper-catalog .main .one-product .one-product-top .one-product-feature {
     overflow: hidden;
+    padding: 0;
   }
   .wrapper-catalog .main .one-product .one-product-top #one-product-main-img {
     width: 100%;
+    height: 350px;
   }
   .wrapper-catalog .main .one-product .one-product-top > * {
     width: 100%;
@@ -1674,18 +1717,29 @@ button:hover {
   .wrapper-catalog .main .one-product iframe {
     width: 100%;
   }
+  .wrapper-catalog .main .one-product-rev {
+    margin: 15px 0;
+  }
   .wrapper-catalog .main .one-product-rev .also-like {
     display: none;
+  }
+  .wrapper-catalog .main .one-product-rev > * {
+    width: 100%;
+    min-width: unset;
   }
   .wrapper-catalog .main .grid-payment {
     grid-template-rows: repeat(4, 1fr);
     grid-template-columns: 1fr;
   }
   .wrapper-catalog .main .grid-payment div {
+    padding: 14px;
     max-width: 80vw;
+    max-height: 300px;
+    overflow: hidden;
   }
   .wrapper-catalog .main .grid-payment div img {
     max-width: 100%;
+    max-height: 100%;
   }
 
   .about-msg-active {
@@ -1694,6 +1748,12 @@ button:hover {
 
   .wrapper-main {
     overflow: hidden;
+  }
+  .wrapper-main .main .rotating {
+    width: 90%;
+  }
+  .wrapper-main .main form {
+    width: 100%;
   }
 
   .admin-wrapper section .container .line-row {
@@ -1714,6 +1774,12 @@ button:hover {
 
   .admin-modal header button img {
     max-width: 100%;
+  }
+}
+@media screen and (max-width: 600px) {
+  .mobile-menu-modal .mobile-menu-grid {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
   }
 }
 @keyframes drop {
@@ -1770,6 +1836,10 @@ button:hover {
 
 .text-drop-active {
   height: auto !important;
+  transition: all 0.3s ease-out;
+}
+.text-drop-active img {
+  transform: rotate(180deg);
   transition: all 0.3s ease-out;
 }
 
