@@ -1,15 +1,19 @@
+//Миксины
+//Внешняя тень
 @mixin outer-shadow($offsetX, $offsetY, $blurRadius){
   box-shadow:$offsetX $offsetY $blurRadius 0 rgba(0,0,0,0.3);
 }
 
+//Внутренняя тень
 @mixin inner-shadow($offsetX, $offsetY, $blurRadius) {
   box-shadow: inset $offsetX $offsetY $blurRadius 0 rgba(0, 0, 0, 0.3);
-
 }
+//Flex-центрирование
 @mixin center-flex(){
   align-items: center;
   justify-content: center;
 }
+//Темплейт формы
 @mixin form-template($borderColor, $btnPosColor, $btnNegColor){
   padding: 14px;
   border:2px solid $borderColor;
@@ -49,6 +53,7 @@
   }
 
 }
+//Двухсторонняя карточка
 @mixin double-card(){
   position: relative;
   .front, .back{
@@ -64,6 +69,7 @@
     transform: rotateY(180deg);
   }
 }
+//Вращающаяся двухстороняя карточка
 @mixin rotate-card(){
   perspective: 1000px;
   @include double-card();
@@ -74,7 +80,7 @@
     transform: rotateY(360deg);
   }
 }
-
+//Карточка товара
 @mixin product-card(){
   @include rotate-card();
   width: 270px;
@@ -83,9 +89,9 @@
   .front,.back{
 
     align-items: center;
-    border:2px solid $blue-col;
+    border: 1px solid $main-col;
     justify-content: space-between;
-    @include outer-shadow(1px,4px,4px);
+    @include outer-shadow(2px,4px,4px);
     overflow: hidden;
   }
   .front{
@@ -124,7 +130,7 @@
     padding: 6px;
   }
 }
-
+//Кнопка
 @mixin simple-btn($backgroundColor){
   border:none;
   padding: 14px;
@@ -132,7 +138,7 @@
   background-color: $backgroundColor;
   color:white;
 }
-
+//Информация о пользователе
 @mixin user-info{
   z-index: 2;
   @include center-flex();
@@ -179,7 +185,7 @@
     }
   }
 }
-
+//Кнопка Login
 @mixin login-btn{
   font-size: 1.1em;
   border:2px solid $blue-col;
@@ -188,9 +194,14 @@
   background-color: white;
   border-radius: 15px;
   text-decoration: none;
-  @include outer-shadow(1px,2px,4px);
+  @include outer-shadow(1px,2px,3px);
+  &:hover{
+    transform: translateY(-3px);
+    transition: all 0.4s ease-out;
+    @include outer-shadow(3px,6px,4px);
+  }
 }
-
+//Тогллер светлая/тёмная тема
 @mixin light-mode-btn{
   align-items: center;
   justify-content: flex-start;

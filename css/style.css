@@ -45,6 +45,7 @@
   height: 100%;
 }
 .admin-wrapper .header .menu-toggler {
+  opacity: 0.8;
   cursor: pointer;
   z-index: 1;
   width: 90px;
@@ -121,6 +122,7 @@
   padding: 30px 0;
 }
 .admin-wrapper .main section .container .line-row {
+  overflow: hidden;
   width: 100%;
   height: 80px;
   border-bottom: 2px solid #E56CCF;
@@ -267,15 +269,18 @@
   list-style: none;
 }
 .admin-modal > ul > li {
-  padding: 10px;
-  font-size: 22px;
+  padding: 15px;
+  font-size: 1.15em;
   border-bottom: 2px solid darkgrey;
 }
 .admin-modal > ul > li > ul {
   padding: 7px;
 }
+.admin-modal > ul > li > ul > li {
+  padding: 7px;
+}
 .admin-modal > ul > li a {
-  font-size: 20px;
+  font-size: 1.05em;
   text-decoration: none;
 }
 
@@ -418,7 +423,12 @@ button:hover {
   background-color: white;
   border-radius: 15px;
   text-decoration: none;
-  box-shadow: 1px 2px 4px 0 rgba(0, 0, 0, 0.3);
+  box-shadow: 1px 2px 3px 0 rgba(0, 0, 0, 0.3);
+}
+.mobile-menu-modal header #login-btn:hover {
+  transform: translateY(-3px);
+  transition: all 0.4s ease-out;
+  box-shadow: 3px 6px 4px 0 rgba(0, 0, 0, 0.3);
 }
 .mobile-menu-modal .mobile-menu-grid {
   height: 80%;
@@ -498,6 +508,10 @@ button:hover {
   height: 40px;
   background-color: #f3f3f3;
   cursor: pointer;
+}
+.wrapper .section-control .section-toggler:hover {
+  transform: translateY(5px);
+  transition: all 0.4s ease-out;
 }
 .wrapper .section-control .section-toggler .section-toggler-line {
   height: 4px;
@@ -588,7 +602,12 @@ button:hover {
   background-color: white;
   border-radius: 15px;
   text-decoration: none;
-  box-shadow: 1px 2px 4px 0 rgba(0, 0, 0, 0.3);
+  box-shadow: 1px 2px 3px 0 rgba(0, 0, 0, 0.3);
+}
+.wrapper .header #login-btn:hover {
+  transform: translateY(-3px);
+  transition: all 0.4s ease-out;
+  box-shadow: 3px 6px 4px 0 rgba(0, 0, 0, 0.3);
 }
 .wrapper .header .light-mode {
   align-items: center;
@@ -671,6 +690,9 @@ button:hover {
 .wrapper .catalog ul li a {
   text-decoration: none;
   font-size: 1.1em;
+}
+.wrapper .catalog ul li:hover {
+  transform: translateY(-3px);
 }
 .wrapper .catalog .sub-cat {
   width: 25%;
@@ -798,9 +820,9 @@ button:hover {
 }
 .wrapper .top .container .top-product .front, .wrapper .top .container .top-product .back {
   align-items: center;
-  border: 2px solid #3E6FB9;
+  border: 1px solid #f3f3f3;
   justify-content: space-between;
-  box-shadow: 1px 4px 4px 0 rgba(0, 0, 0, 0.3);
+  box-shadow: 2px 4px 4px 0 rgba(0, 0, 0, 0.3);
   overflow: hidden;
 }
 .wrapper .top .container .top-product .front h4 {
@@ -890,10 +912,10 @@ button:hover {
   width: 100%;
 }
 .wrapper .footer {
-  margin-top: 14px;
   padding: 7px;
   background-color: #f3f3f3;
   flex-wrap: wrap;
+  border-top: 12px solid #E56CCF;
   align-items: center;
   justify-content: center;
   box-shadow: 1px -2px 4px 0 rgba(0, 0, 0, 0.3);
@@ -902,7 +924,10 @@ button:hover {
   align-items: center;
 }
 .wrapper .footer .col span {
-  margin-bottom: 30px;
+  padding: 10px;
+}
+.wrapper .footer .col .row {
+  margin: 10px;
 }
 .wrapper .footer .col .row input {
   font-size: 1.1em;
@@ -1228,9 +1253,9 @@ button:hover {
 }
 .wrapper-catalog .main .catalog-products .catalog-products-container .product .front, .wrapper-catalog .main .catalog-products .catalog-products-container .product .back {
   align-items: center;
-  border: 2px solid #3E6FB9;
+  border: 1px solid #f3f3f3;
   justify-content: space-between;
-  box-shadow: 1px 4px 4px 0 rgba(0, 0, 0, 0.3);
+  box-shadow: 2px 4px 4px 0 rgba(0, 0, 0, 0.3);
   overflow: hidden;
 }
 .wrapper-catalog .main .catalog-products .catalog-products-container .product .front h4 {
@@ -1448,9 +1473,9 @@ button:hover {
 }
 .wrapper-catalog .main .also-like .product .front, .wrapper-catalog .main .also-like .product .back {
   align-items: center;
-  border: 2px solid #3E6FB9;
+  border: 1px solid #f3f3f3;
   justify-content: space-between;
-  box-shadow: 1px 4px 4px 0 rgba(0, 0, 0, 0.3);
+  box-shadow: 2px 4px 4px 0 rgba(0, 0, 0, 0.3);
   overflow: hidden;
 }
 .wrapper-catalog .main .also-like .product .front h4 {
@@ -1663,6 +1688,26 @@ button:hover {
 
   .wrapper-main {
     overflow: hidden;
+  }
+
+  .admin-wrapper section .container .line-row {
+    height: auto !important;
+    flex-wrap: wrap;
+  }
+  .admin-wrapper section .container .line-row > * {
+    margin: 10px 0;
+    width: 50% !important;
+  }
+  .admin-wrapper section .container .line-row > * img {
+    max-width: 80%;
+  }
+  .admin-wrapper .header .menu-toggler {
+    top: 5px;
+    right: 5px;
+  }
+
+  .admin-modal header button img {
+    max-width: 100%;
   }
 }
 @keyframes drop {

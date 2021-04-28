@@ -49,12 +49,15 @@ if(adminModalCloseBtn!==null){
 }
 
 
+if(allRecords!==null){
+    allRecords.forEach(item=>item.addEventListener('contextmenu',function (e){
+        e.preventDefault();
+        if(!e.target.closest('.line-row').classList.contains('line-row-example')){
+            contextMenu.classList.toggle('modal-context-menu-active');
+            contextMenu.style.top = e.pageY + "px";
+            contextMenu.style.left = e.pageX + "px";
+            contextIdInput.value = e.target.closest('.line-row').id;
+        }
 
-allRecords.forEach(item=>item.addEventListener('contextmenu',function (e){
-    e.preventDefault();
-    contextMenu.classList.toggle('modal-context-menu-active');
-    contextMenu.style.top = e.pageY + "px";
-    contextMenu.style.left = e.pageX + "px";
-    contextIdInput.value = e.target.closest('.line-row').id;
-
-}));
+    }));
+}

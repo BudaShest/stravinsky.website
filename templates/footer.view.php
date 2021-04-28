@@ -1,9 +1,9 @@
 <footer class="footer row">
     <div class="col">
-        <span>Do you want to be informed?</span>
+        <span>Вы хотите быть в курсе новостей?</span>
         <div class="row">
             <input type="text">
-            <button>Confirm</button>
+            <button>OK</button>
         </div>
     </div>
 </footer>

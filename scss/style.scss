@@ -90,7 +90,6 @@ button{
     }
   }
   .mobile-menu-grid{
-
     height: 80%;
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -151,6 +150,10 @@ button{
       height: 40px;
       background-color: $main-col;
       cursor:pointer;
+      &:hover{
+        transform: translateY(5px);
+        transition: all 0.4s ease-out;
+      }
       .section-toggler-line{
         height: 4px;
         width: 40px;
@@ -205,6 +208,7 @@ button{
       @include light-mode-btn();
     }
     .mobile-menu-toggler{
+
       display: none;
       z-index: 2;
       width: 80px;
@@ -266,6 +270,10 @@ button{
         a{
           text-decoration: none;
           font-size: 1.1em;
+        }
+        &:hover{
+          transform: translateY(-3px);
+
         }
       }
     }
@@ -441,23 +449,27 @@ button{
   }
   //Подвал сайта
   .footer{
-    margin-top: 14px;
+
     padding: 7px;
     background-color: $main-col;
     flex-wrap: wrap;
+    border-top: 12px solid $purple-col;
     @include center-flex();
     @include outer-shadow(1px,-2px,4px);
     .col{
       align-items: center;
+
       span{
-        margin-bottom: 30px;
+        padding: 10px;
       }
       .row{
+        margin: 10px;
         input{
           font-size: 1.1em;
           padding: 4px;
           @include inner-shadow(1px,4px,4px);
           border:none;
+
         }
         button{
           @include simple-btn($purple-col);

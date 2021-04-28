@@ -76,6 +76,12 @@
                     <header>
 
                     </header>
+                    <a href="#" class="row line-row line-row-example">
+                        <div class="row">Изображение</div>
+                        <div class="row">Заголовок</div>
+                        <div class="row">Что?</div>
+                        <div class="row">Текст</div>
+                    </a>
                     <div id="admin-all-adverts">
                         <?php foreach($banners as $banner):?>
                             <a href="#" class="row line-row" id="<?=$banner->id?>">
@@ -141,6 +147,12 @@
                             </select>
                         </form>
                     </header>
+                    <a href="#" class="row line-row line-row-example">
+                        <div class="row">Изображение</div>
+                        <div class="row">Категория</div>
+                        <div class="row">Имя бренда</div>
+                        <div class="row">Цвет</div>
+                    </a>
                     <div id="admin-all-brands">
                         <?php foreach ($brands as $brand): ?>
                             <a href="#" class="row line-row" id="<?=$brand->id?>">
@@ -204,6 +216,12 @@
                             </select>
                         </form>
                     </header>
+                    <a href="#" class="row line-row line-row-example">
+                        <div class="row">Имя категории</div>
+                        <div class="row">Имя надкатегории</div>
+                        <div class="row">Цвет</div>
+                        <div class="row"></div>
+                    </a>
                     <div id="admin-all-categories">
                         <?php foreach ($categories as $category): //TODO вместо # в ссылке будет категория?>
                             <a href="#" class="row line-row" id="<?=$category->id?>">
@@ -284,6 +302,12 @@
                             </select>
                         </form>
                     </header>
+                    <a href="#" class="row line-row line-row-example">
+                        <div class="row">Имя продукта</div>
+                        <div class="row">Рейтинг</div>
+                        <div class="row">Цена</div>
+                        <div class="row">Имя категории</div>
+                    </a>
                     <div id="admin-all-products">
                         <?php foreach ($products as $product):?>
                             <a class="row line-row" href="#" id="<?=$product->id?>">

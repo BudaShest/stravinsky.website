@@ -203,4 +203,39 @@
   .wrapper-main{
     overflow: hidden;
   }
+
+  .admin-wrapper{
+    section{
+      .container{
+        .line-row{
+          height: auto !important;
+          flex-wrap: wrap;
+          >*{
+            img{
+              max-width: 80%;
+            }
+            margin: 10px 0;
+            width: 50% !important;
+          }
+        }
+      }
+    }
+    .header{
+      .menu-toggler{
+        top:5px;
+        right: 5px;
+      }
+    }
+  }
+
+
+  .admin-modal{
+    header{
+      button{
+        img{
+          max-width: 100%;
+        }
+      }
+    }
+  }
 }
