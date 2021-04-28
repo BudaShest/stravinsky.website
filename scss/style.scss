@@ -16,12 +16,14 @@
   display: flex;
   flex-direction: column;
 }
-
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&display=swap');
 
 body{
-  font-size:18px;
-  font-family: "Segoe UI Light", sans-serif;
+  font-size:16px;
+  //font-family: "Segoe UI Light", sans-serif;
   //font-family: "PoiretOne", sans-serif;
+  //font-family: 'Quicksand', sans-serif;
+  font-family: 'Comfortaa', cursive;
 }
 button{
   &:hover{
@@ -161,11 +163,9 @@ button{
   }
   //Шапка
   .header{
-    justify-content: space-between;
-    padding: 0 20px;
+    justify-content: space-evenly;
     align-items: center;
-    border-bottom: 2px solid grey;
-
+    border-bottom: 12px solid $purple-col;
     .logo{
       max-width: 270px;
       height: 80px;
@@ -233,7 +233,6 @@ button{
       width: 100%;
       justify-content: space-around;
       color:white;
-      font-family: SocuiSans, sans-serif;
       .banner-company-name{
         font-size: 3.6em;
       }
@@ -303,13 +302,6 @@ button{
         ul>li{
           padding: 25px 10px;
         }
-        //.catalog-img{
-        //  @include center-flex();
-        //  img{
-        //    object-fit: contain;
-        //    max-height: 80%;
-        //  }
-        //}
       }
     }
   }
@@ -360,6 +352,7 @@ button{
         align-items: flex-start;
         span{
           font-size:1.25em;
+          padding: 14px;
           //Что
           &:nth-child(1){
             color: $blue-col;
@@ -446,6 +439,7 @@ button{
       }
     }
   }
+  //Подвал сайта
   .footer{
     margin-top: 14px;
     padding: 7px;

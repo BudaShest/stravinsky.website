@@ -12,7 +12,6 @@
         <a href="/index.php#about-us">О нас</a>
     </nav>
     <?php include $_SERVER['DOCUMENT_ROOT'] . "/templates/current-user.view.php" ?>
-    <?php include $_SERVER['DOCUMENT_ROOT'] . "/templates/light-mode-btn.view.php" ?>
     <div class="mobile-menu-toggler col">
         <img src="/imgs/togglers/menu-left.png" alt="Открыть меню">
     </div>

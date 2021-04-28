@@ -7,6 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Stravinsky</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap" rel="stylesheet">
     <script defer src="js/script.js"></script>
     <script type="module" defer src="/ajax/ajax-main.js"></script>
     <script type="module" defer src="/ajax/functions.js"></script>

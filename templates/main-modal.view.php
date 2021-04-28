@@ -9,6 +9,6 @@
         <a href="/index.php#about-us" class="col"><img src="/imgs/links/about-us.png" alt="О нас"><span>О нас</span></a>
         <a href="/route/basket" class="col"><img src="/imgs/links/basket.png" alt="Корзина"><span>Корзина</span></a>
         <a href="/route/applications" class="col"><img src="/imgs/links/applications.png" alt="Мои завявки"><span>Мои завявки</span></a>
-        <?php include $_SERVER['DOCUMENT_ROOT'] . "/templates/light-mode-btn.view.php" ?>
+        <a href="#"></a>
     </div>
 </div>

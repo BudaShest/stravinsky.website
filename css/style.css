@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&display=swap");
 @font-face {
   font-family: PoiretOne;
   src: url("../fonts/PoiretOne.ttf") format("opentype");
@@ -308,8 +309,8 @@
 }
 
 body {
-  font-size: 18px;
-  font-family: "Segoe UI Light", sans-serif;
+  font-size: 16px;
+  font-family: "Comfortaa", cursive;
 }
 
 button:hover {
@@ -415,7 +416,6 @@ button:hover {
   padding: 7px;
   color: #3E6FB9;
   background-color: white;
-  font-family: "SocuiSans", sans-serif;
   border-radius: 15px;
   text-decoration: none;
   box-shadow: 1px 2px 4px 0 rgba(0, 0, 0, 0.3);
@@ -508,10 +508,9 @@ button:hover {
   grid-column: 1/7;
 }
 .wrapper .header {
-  justify-content: space-between;
-  padding: 0 20px;
+  justify-content: space-evenly;
   align-items: center;
-  border-bottom: 2px solid grey;
+  border-bottom: 12px solid #E56CCF;
 }
 .wrapper .header .logo {
   max-width: 270px;
@@ -587,7 +586,6 @@ button:hover {
   padding: 7px;
   color: #3E6FB9;
   background-color: white;
-  font-family: "SocuiSans", sans-serif;
   border-radius: 15px;
   text-decoration: none;
   box-shadow: 1px 2px 4px 0 rgba(0, 0, 0, 0.3);
@@ -641,7 +639,6 @@ button:hover {
   width: 100%;
   justify-content: space-around;
   color: white;
-  font-family: SocuiSans, sans-serif;
 }
 .wrapper .banner .banner-block .banner-company-name {
   font-size: 3.6em;
@@ -753,6 +750,7 @@ button:hover {
 }
 .wrapper .advert .container .advert-text span {
   font-size: 1.25em;
+  padding: 14px;
 }
 .wrapper .advert .container .advert-text span:nth-child(1) {
   color: #3E6FB9;
