@@ -1,4 +1,4 @@
-import {sendRequest,render} from '/ajax/functions.js';
+import {sendRequest,render, checkField} from '/ajax/functions.js';
 
 let registerForm = document.querySelector('#register-form');
 let regLoginInput = document.querySelector('#user-login-input');
@@ -25,6 +25,9 @@ registerForm.onsubmit = function (){
 
 regLoginInput.addEventListener('change',function (){
    let params = this.value.trim();
+
+   checkField(params);
+
    sendRequest('POST','/route/auth/ajax/validate-queries.php','register-login='+params)
        .then(data=>{
           if(Object.keys(data).includes('error')){
@@ -43,6 +46,7 @@ regLoginInput.addEventListener('change',function (){
 
 regPasswordInput.addEventListener('change',function (){
    let params = this.value.trim();
+   checkField(params);
    sendRequest('POST','/route/auth/ajax/validate-queries.php', 'register-password='+params)
        .then(data=>{
            if(Object.keys(data).includes('error')){
@@ -62,6 +66,7 @@ regPasswordInput.addEventListener('change',function (){
 
 regEmailInput.addEventListener('change',function (){
    let params = this.value.trim();
+   checkField(params);
    sendRequest('POST','/route/auth/ajax/validate-queries.php', 'register-email='+params)
        .then(data=>{
            if(Object.keys(data).includes('error')){

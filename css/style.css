@@ -911,6 +911,12 @@ button:hover {
 .wrapper .contacts .container .all-links a img {
   width: 100%;
 }
+.wrapper .contacts .container .all-mails .col, .wrapper .contacts .container .main-phone .col {
+  align-items: center;
+}
+.wrapper .contacts .container .all-mails .col a, .wrapper .contacts .container .main-phone .col a {
+  padding: 10px;
+}
 .wrapper .footer {
   padding: 7px;
   background-color: #f3f3f3;

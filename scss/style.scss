@@ -438,10 +438,19 @@ button{
       .all-links{
         margin: 14px 0;
         a{
+
           width: 125px;
           height: 125px;
           img{
             width: 100%;
+          }
+        }
+      }
+      .all-mails, .main-phone{
+        .col{
+          align-items: center;
+          a{
+            padding: 10px;
           }
         }
       }

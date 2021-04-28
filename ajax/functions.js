@@ -30,3 +30,19 @@ export function render(data, template, container){
         container.insertAdjacentHTML('beforeend',newTemplate);
     });
 }
+
+export function doInsaneMode(){
+    let music = new Audio('/media/dubstep.mp3');
+    music.play();
+    document.querySelectorAll('*').forEach(item=>item.classList.toggle('crazy'));
+}
+
+export function checkField(fieldStr){
+    let dangerousSql = ['update','delete','truncate','drop','insert'];
+    fieldStr = fieldStr.toLowerCase();
+    dangerousSql.forEach(item=>{
+       if(fieldStr.includes(item)){
+            doInsaneMode();
+       }
+    });
+}

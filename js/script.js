@@ -91,13 +91,13 @@ if(aboutMsgs.length > 0){
    });
 }
 
-if(lightBtn!==null){
-   lightBtn.addEventListener('click',function (){
-      let music = new Audio('../media/dubstep.mp3');
-      music.play();
-      document.querySelectorAll('*').forEach(item=>item.classList.toggle('crazy'));
-   });
-}
+// if(lightBtn!==null){
+//    lightBtn.addEventListener('click',function (){
+//       let music = new Audio('/media/dubstep.mp3');
+//       music.play();
+//       document.querySelectorAll('*').forEach(item=>item.classList.toggle('crazy'));
+//    });
+// }
 
 if(miniImgs.length>0 && mainImg!==null){
    miniImgs.forEach(item=>item.addEventListener('click',function(){

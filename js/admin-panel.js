@@ -57,6 +57,8 @@ if(allRecords!==null){
             contextMenu.style.top = e.pageY + "px";
             contextMenu.style.left = e.pageX + "px";
             contextIdInput.value = e.target.closest('.line-row').id;
+        }else{
+            contextMenu.classList.remove('modal-context-menu-active');
         }
 
     }));

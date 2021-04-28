@@ -131,21 +131,21 @@
                 <div class="row main-phone">
                     <div class="col">
                         <h4>ТЕЛЕФОН:</h4>
-                        <span>8-800-555-35-35</span>
+                        <a href="tel:+78005553535">8-800-555-35-35</a>
                     </div>
                 </div>
                 <div class="row all-mails">
                     <div class="col">
                         <h4>EMAIL:</h4>
-                        <span>stravinsky@gmail.com</span>
+                        <a href="mailto:stravinsky@gmail.com">stravinsky@gmail.com</a>
                     </div>
                     <div class="col">
                         <h4>ПОДДЕРЖКА:</h4>
-                        <span>stravinsky.support@gmail.com</span>
+                        <a href="mailto:stravinsky.support@gmail.com">stravinsky.support@gmail.com</a>
                     </div>
                     <div class="col">
                         <h4>ДЛЯ ПАРТНЁРОВ:</h4>
-                        <span>stravinsky.partners@gmail.com</span>
+                        <a href="mailto:stravinsky.partners@gmail.com">stravinsky.partners@gmail.com</a>
                     </div>
                 </div>
             </div>
