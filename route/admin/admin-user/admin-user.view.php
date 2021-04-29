@@ -28,7 +28,11 @@
                             <span>Роль: <?=$user->role_name?></span>
                             <span>IP: <?=$user->user_ip?></span>
                             <form action="/route/admin/admin-logic.php" method="post">
-                                <button name="user_ban_id" value="<?=$user->id?>">Забанить</button>
+                                <?php if(in_array($user->id,$bannedIdList)):?>
+                                    <button name="user_unban_id" value="<?=$user->id?>">Разбанить</button>
+                                <?php else:?>
+                                    <button name="user_ban_id" value="<?=$user->id?>">Забанить</button>
+                                <?php endif;?>
                             </form>
                         </div>
                     </div>

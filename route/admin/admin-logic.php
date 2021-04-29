@@ -212,6 +212,10 @@ if(isset($_POST['user_ban_id'])){
     $dataUser->banUser($_POST['user_ban_id']);
     header('Location: /route/admin');
 }
+if(isset($_POST['user_unban_id'])){
+    $dataUser->unbanUser($_POST['user_unban_id']);
+    header('Location: /route/admin');
+}
 if(isset($_POST['application_id'])){
     $dataApplication->deleteOneRecord($_POST['application_id']);
     header('Location: /route/admin');

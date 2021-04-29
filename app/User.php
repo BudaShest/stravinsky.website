@@ -67,6 +67,11 @@ class User
         ]);
     }
 
+    public function unbanUser(int $userId){
+        $stmt = $this->pdo->prepare('DELETE FROM banned WHERE user_id=:user_id');
+        $stmt->execute([':user_id'=>$userId]);
+    }
+
 
     public function getBannedIpList(){
         $stmt = $this->pdo->query('SELECT user_ip FROM banned inner join users u on banned.user_id = u.id');
