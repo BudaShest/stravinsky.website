@@ -2,6 +2,10 @@
 session_start();
 require "bootstrap.php";
 
+if(in_array($_SERVER['REMOTE_ADDR'], $dataUser->getBannedIpList())){
+    header('Location: https://studme.org/297698/psihologiya/destruktivnoe_povedenie');
+}
+
 $topProducts = $dataProduct->getProductsTop(6);
 $brands = $dataBrand->getAllRecords(6);
 $subCategories = $dataCategory->getSubCategories();

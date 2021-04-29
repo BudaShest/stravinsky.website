@@ -53,6 +53,9 @@ if(allRecords!==null){
     allRecords.forEach(item=>item.addEventListener('contextmenu',function (e){
         e.preventDefault();
         if(!e.target.closest('.line-row').classList.contains('line-row-example')){
+            if(e.target.closest('.line-row').dataset.isreview == "true"){
+                contextTableInput.value = "admin-one-user-settings-rev";
+            }
             contextMenu.classList.toggle('modal-context-menu-active');
             contextMenu.style.top = e.pageY + "px";
             contextMenu.style.left = e.pageX + "px";

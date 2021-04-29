@@ -124,6 +124,9 @@ if(isset($_GET['btn_delete_row'])){
         case "admin-one-user-settings":
             $dataApplication->deleteOneRecord($_GET['context_table_id']);
             break;
+        case "admin-one-user-settings-rev":
+            $dataReview->deleteReview($_GET['context_table_id']);
+            break;
 
     }
     header('Location: /route/admin');
@@ -205,3 +208,7 @@ if(isset($_POST['btn_update_product_delete'])){
     header('Location: /route/admin');
 }
 
+if(isset($_POST['user_ban_id'])){
+    $dataUser->banUser($_POST['user_ban_id']);
+    header('Location: /route/admin');
+}

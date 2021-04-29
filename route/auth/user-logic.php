@@ -30,13 +30,14 @@ if(isset($_POST['reg_submit_btn'])){
     $password = Validate::validateString(password_hash($_POST['user_password'], PASSWORD_DEFAULT));
     $image = $fileWorker->uploadOneImg($_FILES['user_img'],"user-data");
 
-    $emailCode = $_POST['user_email_code'];
-    $emailCodeConfirm = $_POST['user_email_code_confirm'];
+//    $emailCode = $_POST['user_email_code'];
+//    $emailCodeConfirm = $_POST['user_email_code_confirm'];
+    $userIp = $_SERVER["REMOTE_ADDR"];
 
     if(!in_array($login, $dataUser->getAllNames())){
         if(!in_array($email, $dataUser->getAllEmails())){
             if(true){ //TODO $emailCode === $emailCodeConfirm - вот такое условие
-                $dataUser->insertRecord($login,$email,$password,$image);
+                $dataUser->insertRecord($login,$email,$password,$image,$userIp);
                 header('Location:/');
             }
             //TODO если заработает подтверждение по почте, вернуть
@@ -71,3 +72,4 @@ if(isset($_GET['btn_basket'])){
 if(isset($_GET['btn_applications'])){
     header('Location: /route/applications');
 }
+

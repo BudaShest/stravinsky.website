@@ -65,4 +65,11 @@ class Review
         }
     }
 
+    public function deleteReview(int $reviewId){
+        $stmt = $this->pdo->prepare('DELETE FROM reviews WHERE id=:review_id');
+        $stmt->execute([':review_id'=>$reviewId]);
+    }
+
+
+
 }

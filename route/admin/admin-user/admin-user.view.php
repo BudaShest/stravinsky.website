@@ -30,6 +30,10 @@
                             <h3>Логин: <?=$user->login?></h3>
                             <span>Email: <?=$user->email?></span>
                             <span>Роль: <?=$user->role_name?></span>
+                            <span>IP: <?=$user->user_ip?></span>
+                            <form action="/route/admin/admin-logic.php" method="post">
+                                <button name="user_ban_id" value="<?=$user->id?>">Забанить</button>
+                            </form>
                         </div>
                     </div>
                     <h3>Завявки пользователя <?=$user->login?></h3>
@@ -46,7 +50,7 @@
                     <h3>Комментарии пользователя <?=$user->login?></h3>
                     <div class="all-records admin-user-reviews col">
                         <?php foreach($usersReviews as $usersReview):?>
-                            <a class="row line-row" href="#"  id="<?=$usersReview->id?>">
+                            <a class="row line-row" href="#"  id="<?=$usersReview->id?>" data-isreview="true">
                                 <div class="row">картинки</div>
                                 <div class="row admin-user-review-text"><span><?=mb_strcut($usersReview->text,0,80)?>...</span></div>
                                 <div class="row"><span><?=$usersReview->created_at?></span></div>
