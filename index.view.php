@@ -1,12 +1,8 @@
 <!doctype html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <?php require $_SERVER['DOCUMENT_ROOT'] . "/templates/page-headers.php"?>
     <title>Stravinsky</title>
-    <link rel="stylesheet" href="css/style.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap" rel="stylesheet">
     <script defer src="js/script.js"></script>
@@ -78,13 +74,13 @@
                                 <h4><?=$topProduct->name?></h4>
                                 <span class="product-category"><?=$topProduct->cat_name?></span>
                                 <img src="imgs/admin-data/<?=$topProduct->image?>" alt="">
-                                <span><?=$topProduct->rating?></span>
+
                                 <div class="row">
                                     <span class="old-price"><strike><?=$topProduct->price?> руб.</strike></span><span class="new-price"><?=$topProduct->price?> руб.</span>
                                 </div>
                             </div>
                             <div class="back col">
-                                <p><?=mb_strcut($topProduct->description,0,600)?>...</p>
+                                <p><?=trim(mb_strcut($topProduct->description,0,600))?>...</p>
                             </div>
                         </div>
                     </a>

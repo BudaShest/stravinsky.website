@@ -80,9 +80,21 @@
     transform: rotateY(360deg);
   }
 }
+//Поднимающаяся карточка
+@mixin up-card(){
+  @include double-card();
+  &:hover{
+    transition: all 0.3s ease-out;
+    transform: translateY(-7px);
+    .front,.back{
+      @include outer-shadow(5px,8px,10px);
+    }
+  }
+
+}
 //Карточка товара
 @mixin product-card(){
-  @include rotate-card();
+  @include up-card();
   width: 270px;
   height: 400px;
   margin: 14px 0;
@@ -107,7 +119,7 @@
     }
     img{
       max-width: 96%;
-      max-height: 200px;
+      max-height: 250px;
     }
     .product-category{
       align-self: flex-start;

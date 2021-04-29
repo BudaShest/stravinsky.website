@@ -65,8 +65,8 @@ if(isset($_POST['btn_product_submit'])){
     $productName = Validate::validateString($_POST['product_name']);
     $productCategoryId = (int)$_POST['product_cat_id'];
     $productBrandId = (int)$_POST['product_brand_id'];
-    $productFeature = nl2br(Validate::validateString($_POST['product_feature']));
-    $productDesc = nl2br(Validate::validateString($_POST['product_description']));
+    $productFeature = trim($_POST['product_feature']);
+    $productDesc = trim($_POST['product_description']);
     $productPrice = (int)$_POST['product_price'];
     $productVideo = Validate::validateString($_POST['product_video']);
 
@@ -166,7 +166,7 @@ if(isset($_GET['btn_update_row'])){
 
 if(isset($_POST['btn_banner_submit'])){
     $header = Validate::validateString($_POST['banner_header']);
-    $text = Validate::validateString($_POST['banner_text']);
+    $text = $_POST['banner_text'];
     if(isset($_FILES['banner_img']) && $_FILES['banner_img']['name']!=""){
         $img = $fileWorker->uploadOneImg($_FILES['banner_img'],'admin-data');
     }else if(isset($_SESSION['update_banner'])){

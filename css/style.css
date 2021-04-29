@@ -789,7 +789,6 @@ button:hover {
   max-width: 1024px;
 }
 .wrapper .top .container .top-product {
-  perspective: 1000px;
   position: relative;
   width: 270px;
   height: 400px;
@@ -808,11 +807,12 @@ button:hover {
 .wrapper .top .container .top-product .back {
   transform: rotateY(180deg);
 }
-.wrapper .top .container .top-product:hover .front {
-  transform: rotateY(180deg);
+.wrapper .top .container .top-product:hover {
+  transition: all 0.3s ease-out;
+  transform: translateY(-7px);
 }
-.wrapper .top .container .top-product:hover .back {
-  transform: rotateY(360deg);
+.wrapper .top .container .top-product:hover .front, .wrapper .top .container .top-product:hover .back {
+  box-shadow: 5px 8px 10px 0 rgba(0, 0, 0, 0.3);
 }
 .wrapper .top .container .top-product .front, .wrapper .top .container .top-product .back {
   align-items: center;
@@ -833,7 +833,7 @@ button:hover {
 }
 .wrapper .top .container .top-product .front img {
   max-width: 96%;
-  max-height: 200px;
+  max-height: 250px;
 }
 .wrapper .top .container .top-product .front .product-category {
   align-self: flex-start;
@@ -1231,7 +1231,6 @@ button:hover {
   padding: 20px 0;
 }
 .wrapper-catalog .main .catalog-products .catalog-products-container .product {
-  perspective: 1000px;
   position: relative;
   width: 270px;
   height: 400px;
@@ -1250,11 +1249,12 @@ button:hover {
 .wrapper-catalog .main .catalog-products .catalog-products-container .product .back {
   transform: rotateY(180deg);
 }
-.wrapper-catalog .main .catalog-products .catalog-products-container .product:hover .front {
-  transform: rotateY(180deg);
+.wrapper-catalog .main .catalog-products .catalog-products-container .product:hover {
+  transition: all 0.3s ease-out;
+  transform: translateY(-7px);
 }
-.wrapper-catalog .main .catalog-products .catalog-products-container .product:hover .back {
-  transform: rotateY(360deg);
+.wrapper-catalog .main .catalog-products .catalog-products-container .product:hover .front, .wrapper-catalog .main .catalog-products .catalog-products-container .product:hover .back {
+  box-shadow: 5px 8px 10px 0 rgba(0, 0, 0, 0.3);
 }
 .wrapper-catalog .main .catalog-products .catalog-products-container .product .front, .wrapper-catalog .main .catalog-products .catalog-products-container .product .back {
   align-items: center;
@@ -1275,7 +1275,7 @@ button:hover {
 }
 .wrapper-catalog .main .catalog-products .catalog-products-container .product .front img {
   max-width: 96%;
-  max-height: 200px;
+  max-height: 250px;
 }
 .wrapper-catalog .main .catalog-products .catalog-products-container .product .front .product-category {
   align-self: flex-start;
@@ -1457,7 +1457,6 @@ button:hover {
   justify-content: space-evenly;
 }
 .wrapper-catalog .main .also-like .product {
-  perspective: 1000px;
   position: relative;
   width: 270px;
   height: 400px;
@@ -1476,11 +1475,12 @@ button:hover {
 .wrapper-catalog .main .also-like .product .back {
   transform: rotateY(180deg);
 }
-.wrapper-catalog .main .also-like .product:hover .front {
-  transform: rotateY(180deg);
+.wrapper-catalog .main .also-like .product:hover {
+  transition: all 0.3s ease-out;
+  transform: translateY(-7px);
 }
-.wrapper-catalog .main .also-like .product:hover .back {
-  transform: rotateY(360deg);
+.wrapper-catalog .main .also-like .product:hover .front, .wrapper-catalog .main .also-like .product:hover .back {
+  box-shadow: 5px 8px 10px 0 rgba(0, 0, 0, 0.3);
 }
 .wrapper-catalog .main .also-like .product .front, .wrapper-catalog .main .also-like .product .back {
   align-items: center;
@@ -1501,7 +1501,7 @@ button:hover {
 }
 .wrapper-catalog .main .also-like .product .front img {
   max-width: 96%;
-  max-height: 200px;
+  max-height: 250px;
 }
 .wrapper-catalog .main .also-like .product .front .product-category {
   align-self: flex-start;

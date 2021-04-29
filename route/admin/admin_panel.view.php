@@ -1,15 +1,12 @@
 <!doctype html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <?php require $_SERVER['DOCUMENT_ROOT'] . "/templates/page-headers.php"?>
     <title><?=PROJNAME?>| Admin-панель</title>
-    <link rel="stylesheet" href="../../css/style.css">
     <script defer src="/js/admin-panel.js"></script>
     <script type="module" defer src="/ajax/functions.js"></script>
     <script type="module" defer src="/ajax/ajax-admin.js"></script>
+    <script src="https://cdn.tiny.cloud/1/lx1k5gva7psp1ywffg4ujjonc5dk9q44notypc4ns36d6s45/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
 </head>
 <body>
 <?php include $_SERVER['DOCUMENT_ROOT'] . "/templates/admin-modal-context.view.php"?>
@@ -280,7 +277,7 @@
                     <label for="product-video-input">Видео</label>
                     <input type="text" id="product-video-input" name="product_video" value="<?=$_SESSION['update_product']['video']??""?>">
                     <label for="product-feature-input">Характеристики</label>
-                    <textarea wrap="hard" name="product_feature" id="product-feature-input" cols="30" rows="10"><?=$_SESSION['update_product']['feature']??""?></textarea>
+                    <textarea data-editor="ClassicEditor" wrap="hard" name="product_feature" id="product-feature-input" cols="30" rows="10"><?=$_SESSION['update_product']['feature']??""?></textarea>
                     <label for="product-description-input">Описание:</label>
                     <textarea wrap="hard" name="product_description" id="product-description-input" cols="30" rows="10"><?=$_SESSION['update_product']['description']??""?></textarea>
                     <label for="product-price-input">Цена:</label>
@@ -375,8 +372,10 @@
     </main>
     <footer class="footer row"></footer>
 </div>
-
-
-
+<script>
+    tinymce.init({
+        selector: 'textarea'
+    });
+</script>
 </body>
 </html>
