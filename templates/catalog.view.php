@@ -12,6 +12,7 @@
         <div class="col cat">
             <h3>Подкатегории</h3>
             <select name="" id="mobile-supercat-menu">
+                <option value="all" selected>Все категории</option>
                 <?php foreach($subCategories as $subCategory):?>
                     <option value="<?=$subCategory->id?>"><?=$subCategory->name?></option>
                 <?php endforeach;?>

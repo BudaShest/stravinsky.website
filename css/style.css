@@ -112,6 +112,9 @@
 .admin-wrapper .main .auth-admin-form .form-template-btns .btn-negative {
   background-color: #ff5959;
 }
+.admin-wrapper .main #admin-one-application {
+  display: block;
+}
 .admin-wrapper .main section {
   width: 100%;
   display: none;
@@ -205,6 +208,45 @@
 }
 .admin-wrapper .main section .container .all-records {
   width: 100%;
+}
+.admin-wrapper .main section .container .current-application .app-row {
+  flex-wrap: wrap;
+}
+.admin-wrapper .main section .container .current-application .app-row > * {
+  min-height: 400px;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 14px;
+}
+.admin-wrapper .main section .container .current-application .app-row .current-application-user {
+  align-items: center;
+  max-width: 300px;
+}
+.admin-wrapper .main section .container .current-application .app-row .current-application-user img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+}
+.admin-wrapper .main section .container .current-application .current-application-products {
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+.admin-wrapper .main section .container .current-application .current-application-products .application-product {
+  max-height: 280px;
+  max-width: 280px;
+  margin: 14px 0;
+  padding: 7px;
+  box-shadow: 3px 5px 4px 0 rgba(0, 0, 0, 0.3);
+}
+.admin-wrapper .main section .container .current-application .current-application-products .application-product img {
+  max-height: 180px;
+  object-fit: contain;
+}
+.admin-wrapper .main section .container .current-application .current-application-controll button {
+  padding: 10px;
+  background-color: #E56CCF;
+  color: white;
+  margin: 10px;
 }
 .admin-wrapper .main #admin-one-user-settings {
   display: block;
@@ -972,7 +1014,8 @@ button:hover {
   align-items: center;
   justify-content: center;
   width: 80%;
-  height: 520px;
+  height: 550px;
+  perspective: 2000px;
 }
 .wrapper-main .main .rotating .front, .wrapper-main .main .rotating .back {
   position: absolute;

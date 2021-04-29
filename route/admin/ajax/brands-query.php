@@ -34,7 +34,11 @@ if(isset($_POST['prod_brand_id'])){
 }
 
 if(isset($_POST['main_supercat_id'])){
-    $mainCategories = $dataCategory->getCategoriesBySuper($_POST['main_supercat_id']);
+    if($_POST['main_supercat_id'] == "all"){
+        $mainCategories = $dataCategory->getAllRecords();
+    }else{
+        $mainCategories = $dataCategory->getCategoriesBySuper($_POST['main_supercat_id']);
+    }
     echo json_encode($mainCategories);
 }
 
@@ -59,8 +63,9 @@ if(isset($_POST['catalog_brand_id'])){
 if(isset($_POST['app_update_id'])){
     if(isset($_POST['app_update_id']) && isset($_POST['app_update_status'])){
         $dataApplication->changeStatus($_POST['app_update_id'], $_POST['app_update_status']);
+        echo json_encode('yes');
     }
-    echo json_encode('yes');
+
 }
 
 if(isset($_POST['app_status_id'])){

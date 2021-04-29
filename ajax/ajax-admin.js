@@ -54,88 +54,98 @@ let applicationTemplate = `<a class="row line-row" href="#"  id=":id">
                             </a>`;
 
 
+if(applicationStatusInput){
+    applicationStatusInput.addEventListener('change', function (){
+        let params = this.value;
+        applicationContainer.innerHTML = "";
 
-applicationStatusInput.addEventListener('change', function (){
-   let params = this.value;
-   applicationContainer.innerHTML = "";
+        sendRequest('POST', '/route/admin/ajax/brands-query.php','app_status_id='+params)
+            .then(data=>{
+                render(data,applicationTemplate,applicationContainer);
+                appUpdateSelects = document.querySelectorAll('.application-update-select');
 
-   sendRequest('POST', '/route/admin/ajax/brands-query.php','app_status_id='+params)
-       .then(data=>{
-           render(data,applicationTemplate,applicationContainer);
-           appUpdateSelects = document.querySelectorAll('.application-update-select');
+                appUpdateSelects.forEach(item=>item.addEventListener('change',function (e){
+                    let statusId = this.value;
 
-           appUpdateSelects.forEach(item=>item.addEventListener('change',function (e){
-               let statusId = this.value;
+                    let appId = e.currentTarget.previousElementSibling.value;
 
-               let appId = e.currentTarget.previousElementSibling.value;
+                    sendRequest('POST','/route/admin/ajax/brands-query.php','app_update_status='+statusId+"&app_update_id="+appId)
+                        .then(data=>{
+                            console.log(data);
+                        })
+                        .catch(err=>console.error(err))
+                }));
+            })
+            .catch(err=>console.error(err))
+    });
+}
 
-               sendRequest('POST','/route/admin/ajax/brands-query.php','app_update_status='+statusId+"&app_update_id="+appId)
-                   .then(data=>{
-                       console.log(data);
-                   })
-                   .catch(err=>console.error(err))
-           }));
-       })
-       .catch(err=>console.error(err))
+if(appUpdateSelects != null){
+    appUpdateSelects.forEach(item=>item.addEventListener('change',function (e){
+        let statusId = this.value;
+        console.log(statusId);
+        let appId = e.currentTarget.previousElementSibling.value;
+        console.log(appId);
+        sendRequest('POST','/route/admin/ajax/brands-query.php','app_update_status='+statusId+"&app_update_id="+appId)
+            .then(data=>{
+                console.log(data);
+            })
+            .catch(err=>console.error(err))
+    }));
+}
 
+if(prodBrandInput != null){
+    prodBrandInput.addEventListener('change',function (){
+        let params = this.value;
+        productContainer.innerHTML = '';
+        sendRequest('POST','/route/admin/ajax/brands-query.php', 'prod_brand_id='+params)
+            .then(data=>{
+                render(data,productTemplate, productContainer);
+            })
+            .catch(err=>console.log(err))
+    });
+}
 
-});
+if(productCategoryInput != null){
+    productCategoryInput.addEventListener('change',function (){
+        let params = this.value;
+        productBrandInput.innerHTML = '';
+        sendRequest('POST','/route/admin/ajax/brands-query.php','prod_category_id='+params)
+            .then(data=>{
+                data.forEach(item=>{
+                    let option = document.createElement('option');
+                    option.textContent = item.name;
+                    option.value = item.id;
+                    productBrandInput.append(option);
+                });
+            })
+            .catch(err=>console.log(err))
+    });
+}
 
-appUpdateSelects.forEach(item=>item.addEventListener('change',function (e){
-    let statusId = this.value;
+if(categoryInput != null){
+    categoryInput.addEventListener('change',()=>{
+        let params = categoryInput.value;
+        brandsContainer.innerHTML = "";
+        sendRequest('POST', '/route/admin/ajax/brands-query.php','category_id='+params)
+            .then(data=>{
+                render(data, brandTemplate, brandsContainer);
+            })
+            .catch(err=>console.log(err))
+    });
+}
 
-    let appId = e.currentTarget.previousElementSibling.value;
+if(subCategoryInput != null){
+    subCategoryInput.addEventListener('change', function (){
+        let params =  this.value;
+        categoriesContainer.innerHTML = "";
+        sendRequest('POST','/route/admin/ajax/brands-query.php','supercategory_id='+params)
+            .then(data=>{
+                render(data, categoryTemplate,categoriesContainer);
+            })
+            .catch(err=>console.log(err))
+    });
+}
 
-    sendRequest('POST','/route/admin/ajax/brands-query.php','app_update_status='+statusId+"&app_update_id="+appId)
-        .then(data=>{
-            console.log(data);
-        })
-        .catch(err=>console.error(err))
-}));
-
-prodBrandInput.addEventListener('change',function (){
-    let params = this.value;
-    productContainer.innerHTML = '';
-    sendRequest('POST','/route/admin/ajax/brands-query.php', 'prod_brand_id='+params)
-        .then(data=>{
-            render(data,productTemplate, productContainer);
-        })
-        .catch(err=>console.log(err))
-});
-
-productCategoryInput.addEventListener('change',function (){
-    let params = this.value;
-    productBrandInput.innerHTML = '';
-    sendRequest('POST','/route/admin/ajax/brands-query.php','prod_category_id='+params)
-        .then(data=>{
-            data.forEach(item=>{
-               let option = document.createElement('option');
-               option.textContent = item.name;
-               option.value = item.id;
-               productBrandInput.append(option);
-            });
-        })
-        .catch(err=>console.log(err))
-});
-
-categoryInput.addEventListener('change',()=>{
-    let params = categoryInput.value;
-    brandsContainer.innerHTML = "";
-    sendRequest('POST', '/route/admin/ajax/brands-query.php','category_id='+params)
-        .then(data=>{
-            render(data, brandTemplate, brandsContainer);
-        })
-        .catch(err=>console.log(err))
-});
-
-subCategoryInput.addEventListener('change', function (){
-   let params =  this.value;
-   categoriesContainer.innerHTML = "";
-   sendRequest('POST','/route/admin/ajax/brands-query.php','supercategory_id='+params)
-       .then(data=>{
-           render(data, categoryTemplate,categoriesContainer);
-       })
-       .catch(err=>console.log(err))
-});
 
 

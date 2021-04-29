@@ -35,7 +35,7 @@
                     <h3>Завявки пользователя <?=$user->login?></h3>
                     <div class="all-records admin-user-application col">
                         <?php foreach($usersApplications as $usersApplication):?>
-                            <a class="row line-row" href="#"  id="<?=$usersApplication->id?>">
+                            <a class="row line-row" href="/route/admin/admin-applications/index.php?application_id=<?=$usersApplication->id?>"  id="<?=$usersApplication->id?>">
                                 <div class="row"><span>Завявка №<?=$usersApplication->id?></span></div>
                                 <div class="row"><span><?=$usersApplication->sum_price?></span></div>
                                 <div class="row"><span><?=$usersApplication->name?></span></div>

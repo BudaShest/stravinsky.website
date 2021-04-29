@@ -514,11 +514,13 @@ button{
         @include center-flex();
       }
       width: 80%;
-      height: 520px;
+      height: 550px;
+      perspective: 2000px;
     }
     form{
       @include form-template($purple-col,$green-col,$red-col);
       @include outer-shadow(2px,4px,10px);
+
       .email-register-confirm{
         background-color: $main-col;
         padding: 24px;

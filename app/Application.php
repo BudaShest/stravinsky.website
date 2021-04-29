@@ -37,6 +37,12 @@ class Application
         }
     }
 
+    public function getApplication(int $applicationId){
+        $stmt = $this->pdo->prepare('SELECT a.id, user_id,login,email, created_at, status_id, sum_price, name FROM application a INNER JOIN statuses s on a.status_id = s.id INNER JOIN users u on a.user_id = u.id WHERE a.id=:application_id');
+        $stmt->execute([':application_id'=>$applicationId]);
+        return $stmt->fetch();
+    }
+
     public function searchRecord($userId)
     {
         $stmt = $this->pdo->prepare('SELECT a.id, user_id, created_at, status_id, sum_price, name FROM application a INNER JOIN statuses s on a.status_id = s.id WHERE user_id=:user_id');
@@ -71,5 +77,12 @@ class Application
         $stmt = $this->pdo->prepare('SELECT a.id, user_id,u.login, created_at, status_id, sum_price, name FROM application a INNER JOIN statuses s on a.status_id = s.id INNER JOIN users u on a.user_id = u.id WHERE a.status_id = :status_id');
         $stmt->execute(['status_id'=>$statusId]);
         return $stmt->fetchAll();
+    }
+
+    public function getProductsInApplication(int $applicatonId)
+    {
+        $stmt = $this->pdo->prepare('SELECT product_id,quantity FROM products_in_application WHERE application_id = :application_id');
+        $stmt->execute([':application_id'=>$applicatonId]);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 }

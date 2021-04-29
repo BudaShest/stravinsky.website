@@ -24,14 +24,6 @@
                                 <option value="<?=$brandInCategory->id?>"><?=$brandInCategory->name?></option>
                             <?php endforeach;?>
                         </select>
-                        <?php elseif (isset($_GET['brand_id'])):?>
-                            <label for="catalog-category-select"></label>
-                            <select name="" id="catalog-category-select">
-                                <option value="all">Все категории</option>
-                                <?php foreach($categoriesInBrand as $categoryInBrand):?>
-                                    <option value="<?=$categoryInBrand->id?>"><?=$categoryInBrand->name?></option>
-                                <?php endforeach;?>
-                            </select>
                         <?php endif;?>
                     </form>
                 </header>

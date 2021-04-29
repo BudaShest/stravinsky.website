@@ -71,6 +71,9 @@
       width: 70%;
       min-width: 400px;
     }
+    #admin-one-application{
+      display: block;
+    }
     section{
       width: 100%;
       display: none;
@@ -129,6 +132,54 @@
         }
         .all-records{
           width: 100%;
+        }
+        .current-application{
+          .app-row{
+            flex-wrap: wrap;
+            >*{
+              min-height: 400px;
+              justify-content: space-evenly;
+              align-items: center;
+              padding: 14px;
+            }
+            .current-application-user{
+
+              align-items: center;
+              max-width: 300px;
+              img{
+                width: 150px;
+                height: 150px;
+                border-radius: 50%;
+              }
+            }
+
+          }
+          .current-application-products{
+            justify-content: space-evenly;
+            flex-wrap: wrap;
+            .application-product{
+              max-height: 280px;
+              max-width: 280px;
+              margin:14px 0;
+              padding: 7px;
+              @include outer-shadow(3px,5px,4px);
+              img{
+                max-height: 180px;
+                object-fit: contain;
+              }
+            }
+          }
+          .current-application-controll{
+
+            button{
+              padding: 10px;
+              background-color: $purple-col;
+              color:white;
+              margin: 10px;
+            }
+
+          }
+
         }
       }
     }
