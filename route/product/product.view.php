@@ -46,7 +46,7 @@
                         <iframe width="560" height="315" src="<?=$product->video?>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                         <?php endif;?>
                     </div>
-                    <?php if(isset($_SESSION['auth_user_id'])):?>
+                    <?php if($currentUser && isset($_SESSION['auth_user_id'])):?>
                     <div class="row one-product-bottom">
                         <form action="/route/basket/basket-logic.php" class="form-basket-control col" method="get">
                             <input type="number" name="product_id" value="<?=$_GET['product_id']?>" readonly hidden>
@@ -63,10 +63,12 @@
                             <?php endif;?>
                         </div>
                     </div>
+                    <?php else:?>
+                        <span>Для соверешения покупки <a href="/route/auth">авторизуйтесь</a></span>
                     <?php endif;?>
                 <?php endif;?>
                 <div class="one-product-rev col">
-                    <?php if($currentUser):?>
+                    <?php if($currentUser && isset($_SESSION['auth_user_id'])):?>
                     <form class="col" action="/route/product/product-logic.php" method="post" enctype="multipart/form-data">
                         <input type="text" name="product_id" value="<?=$_GET['product_id']?>" readonly hidden>
                         <label for="review-text-input">Текст отзыва</label>

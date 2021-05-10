@@ -24,8 +24,8 @@
         <section class="brands col">
             <h2>Бренды</h2>
             <div class="container row">
-                <?php foreach($brands as $brand):?>
-                    <a href="route/catalog/index.php?brand_id=<?=$brand->id?>"><div class="brand row" style="box-shadow:inset 1px 4px 4px <?=$brand->color?>"><img src="imgs/admin-data/<?=$brand->image?>" alt=""></div></a>
+                <?php foreach($brands as $key=>$brand):?>
+                    <a href="route/catalog/index.php?brand_id=<?=$brand->id?>"><div class="brand row" style="box-shadow:inset 1px 4px 4px <?=$brand->color?>"><img src="imgs/admin-data/<?=$brand->image?>" alt="brand<?=$key?>"></div></a>
                 <?php endforeach?>
             </div>
         </section>
