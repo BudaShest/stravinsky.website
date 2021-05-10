@@ -1,3 +1,5 @@
+//В данном файле-модуле находится список функций, используемых при работе с AJAX.
+//1)Функция для отправки запросов и обработки ответов от сервера
 export function sendRequest(method, url, body=null){
     const headers = {
         'Content-Type':'application/x-www-form-urlencoded'
@@ -19,6 +21,7 @@ export function sendRequest(method, url, body=null){
     })
 }
 
+//2)Функция для рендера
 export function render(data, template, container){
     data.forEach(item=>{
         let newTemplate = template;
@@ -31,12 +34,14 @@ export function render(data, template, container){
     });
 }
 
+//3)Часть защиты от SQL-инъекций
 export function doInsaneMode(){
     let music = new Audio('/media/dubstep.mp3');
     music.play();
     document.querySelectorAll('*').forEach(item=>item.classList.toggle('crazy'));
 }
 
+//4)Часть защиты от SQL-инъекций
 export function checkField(fieldStr){
     let dangerousSql = ['update','delete','truncate','drop','insert'];
     fieldStr = fieldStr.toLowerCase();

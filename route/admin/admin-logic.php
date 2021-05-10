@@ -3,15 +3,7 @@ session_start();
 require $_SERVER['DOCUMENT_ROOT'] . "/bootstrap.php";
 use app\Validate;
 
-//TODO эти две функии ниже перенести
-function capitalize($str){ //TODO Крайне сомнительная функция(c русским языком) //TODO Теперь вроде норм
-    $firstLetter = mb_strtoupper(mb_substr($str,0,1), "UTF-8");
-
-    $str = mb_strtolower($str, "UTF-8");
-    $resStr = $firstLetter . mb_substr($str,1,null, "UTF-8");
-    return $resStr;
-}
-
+//Функция для проверки, есть ли запись с таким именем в базе данных
 function checkName($dataHandler,$name, $tableName){
     if(in_array($name, $dataHandler->getAllNames($tableName))){
         return True;
@@ -20,8 +12,9 @@ function checkName($dataHandler,$name, $tableName){
     }
 }
 
+//Обработка добавления новой категории
 if(isset($_POST['btn_category_submit'])){
-    $name = capitalize(Validate::validateString($_POST['category_name']));
+    $name = Validate::validateString($_POST['category_name']);
     $subcatId = Validate::validateString($_POST['category_sub_id']);
     $color = Validate::validateString($_POST['category_color']);
 
@@ -33,13 +26,13 @@ if(isset($_POST['btn_category_submit'])){
             $dataCategory->insertRecord($name, (int)$subcatId, $color);
         }
     }
-    header('Location: /route/admin');
 
+    header('Location: /route/admin');
 }
 
-
+//Обработка добавления нового бренда
 if(isset($_POST['btn_brand_submit'])){
-    $name = capitalize(Validate::validateString($_POST['brand_name']));
+    $name = Validate::validateString($_POST['brand_name']);
     $color = Validate::validateString($_POST['brand_color']);
     $categoryId = (int)$_POST['brand_cat_id'];
     if(isset($_FILES['brand_logo']) && $_FILES['brand_logo']['name'] == ""){
@@ -60,7 +53,7 @@ if(isset($_POST['btn_brand_submit'])){
     header('Location: /route/admin');
 }
 
-
+//Обработка добавления новой позиции товара
 if(isset($_POST['btn_product_submit'])){
     $productName = Validate::validateString($_POST['product_name']);
     $productCategoryId = (int)$_POST['product_cat_id'];
@@ -94,6 +87,7 @@ if(isset($_POST['btn_product_submit'])){
 
 }
 
+//Обработка удаления через контекстное меню
 if(isset($_GET['btn_delete_row'])){
     switch ($_GET['context_table_name']){
         case "admin-main-settings":
@@ -132,7 +126,7 @@ if(isset($_GET['btn_delete_row'])){
     header('Location: /route/admin');
 }
 
-//Логика изменения постов
+//Обработка изменения через контекстное меню
 if(isset($_GET['btn_update_row'])){
     switch ($_GET['context_table_name']){
         case "admin-main-settings":
@@ -153,17 +147,15 @@ if(isset($_GET['btn_update_row'])){
             $_SESSION['update_product']['images'] = $dataProduct->getImageName($_GET['context_table_id']);
             break;
         case "admin-users-settings":
-
             break;
         case "admin-users-applications":
         case "admin-one-user-settings":
-
             break;
-
     }
     header('Location: /route/admin');
 }
 
+//Обработка добавления баннера
 if(isset($_POST['btn_banner_submit'])){
     $header = Validate::validateString($_POST['banner_header']);
     $text = $_POST['banner_text'];
@@ -187,35 +179,43 @@ if(isset($_POST['btn_banner_submit'])){
     header('Location: /route/admin');
 }
 
+//Обработка удаления баннера из текущего редактирования
 if(isset($_POST['btn_update_banner_delete'])){
     unset($_SESSION['update_banner']);
     header('Location: /route/admin');
 }
 
+//Обработка удаления бренда из текущего редактирования
 if(isset($_POST['btn_update_brand_delete'])){
     unset($_SESSION['update_brand']);
     header('Location: /route/admin');
 }
 
-
+//Обработка удаления категории  из текущего редактирования
 if(isset($_POST['btn_update_category_delete'])){
     unset($_SESSION['update_category']);
     header('Location: /route/admin');
 }
 
+//Обработка удаления продукта  из текущего редактирования
 if(isset($_POST['btn_update_product_delete'])){
     unset($_SESSION['update_product']);
     header('Location: /route/admin');
 }
 
+//Бан пользователя
 if(isset($_POST['user_ban_id'])){
     $dataUser->banUser($_POST['user_ban_id']);
     header('Location: /route/admin');
 }
+
+//Разбан пользователя
 if(isset($_POST['user_unban_id'])){
     $dataUser->unbanUser($_POST['user_unban_id']);
     header('Location: /route/admin');
 }
+
+//Удаление заявки(не из контекстного меню)
 if(isset($_POST['application_id'])){
     $dataApplication->deleteOneRecord($_POST['application_id']);
     header('Location: /route/admin');

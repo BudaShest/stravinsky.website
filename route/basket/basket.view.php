@@ -22,7 +22,7 @@
                     </header>
                     <?php foreach($basketProducts['products'] as $key=>$basketProduct):?>
                         <div class="basket-product row">
-                            <img src="<?=$basketProduct->image?>" alt="">
+                            <img src="<?=$basketProduct->image?>" alt="Изображение товара">
                             <span><?=$basketProduct->name?></span>
                             <span><?=$basketProduct->cat_name?></span>
                             <span><?=$basketProduct->price?> руб.</span>

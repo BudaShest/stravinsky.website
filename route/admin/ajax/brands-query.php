@@ -1,5 +1,6 @@
 <?php
 session_start();
+//В этом файне находится обработка ajax-запросов дла админ-панели
 include $_SERVER['DOCUMENT_ROOT'] . "/bootstrap.php";
 
 if(isset($_POST['category_id'])){

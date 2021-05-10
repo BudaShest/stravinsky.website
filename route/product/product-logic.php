@@ -2,7 +2,7 @@
 session_start();
 require $_SERVER['DOCUMENT_ROOT'] . "/bootstrap.php";
 
-
+//Логика добавления комментарией
 if(isset($_POST['btn_review_submit'])){
     if(isset($_SESSION['auth_user_id'])){
         $authorId = (int)$_SESSION['auth_user_id'];

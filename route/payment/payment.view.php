@@ -17,7 +17,7 @@
                 <h2>Порядок оплаты</h2>
                 <div class="grid-payment">
                     <div class="row">
-                        <img src="/imgs/delievery.png" alt="">
+                        <img src="/imgs/delievery.png" alt="Доставка">
                     </div>
                     <div class="row"> 
                         <p>Для того, чтобы купить товар, Вам необходимо будет добавить нужное наименование в необходимом количестве в коризну. После необходимо подтвердить покупку.
@@ -33,7 +33,7 @@
                         </ul>
                     </div>
                     <div class="row">
-                        <img src="/imgs/payment.png" alt="">
+                        <img src="/imgs/payment.png" alt="Оплата">
                     </div>
                 </div>
                 

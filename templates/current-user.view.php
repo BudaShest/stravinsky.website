@@ -1,6 +1,6 @@
 <?php if(isset($currentUser)):?>
     <div class="current-user-info row">
-        <span><?=$currentUser->login?></span><img src="/imgs/user-data/<?=$currentUser->image?>" alt="">
+        <span><?=$currentUser->login?></span><img src="/imgs/user-data/<?=$currentUser->image?>" alt="Аватар">
         <div class="current-user-control">
             <form class="col user-info-form" action="/route/auth/user-logic.php" method="get">
                 <button name="btn_basket">Корзина</button>

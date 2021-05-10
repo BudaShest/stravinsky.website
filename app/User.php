@@ -4,6 +4,7 @@
 namespace app;
 use PDO;
 
+//Данный класс описывает пользовательскую логику
 class User
 {
     private PDO $pdo;

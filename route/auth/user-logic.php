@@ -4,7 +4,7 @@ use app\Validate;
 require $_SERVER['DOCUMENT_ROOT'] ."/bootstrap.php";
 
 
-//TODO вынести вот это иф в функцию, т.к авторизация повторяется
+//Авторизация
 if(isset($_POST['log_submit_btn'])){
     $login = Validate::validateString($_POST['auth_login']);
     $password = Validate::validateString($_POST['auth_password']);
@@ -20,15 +20,20 @@ if(isset($_POST['log_submit_btn'])){
         $_SESSION['auth_error'] = "Нет такого пользователя";
         header('Location: /route/auth/index.php');
     }
-
-
 }
+
+//Регистрация
 if(isset($_POST['reg_submit_btn'])){
 
     $login = Validate::validateString($_POST['user_login']);
     $email = Validate::validateString($_POST['user_email']);
     $password = Validate::validateString(password_hash($_POST['user_password'], PASSWORD_DEFAULT));
-    $image = $fileWorker->uploadOneImg($_FILES['user_img'],"user-data");
+    if(!empty($_FILES)){
+        $image = $fileWorker->uploadOneImg($_FILES['user_img'],"user-data");
+    }else{
+        $image = "def-user.jpg";
+    }
+
 
 //    $emailCode = $_POST['user_email_code'];
 //    $emailCodeConfirm = $_POST['user_email_code_confirm'];

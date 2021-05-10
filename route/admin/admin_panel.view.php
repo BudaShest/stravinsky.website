@@ -14,7 +14,7 @@
 <div class="admin-wrapper">
     <header class="header row">
         <div class="logo">
-            <img src="/imgs/logo.png" alt="">
+            <img src="/imgs/logo.png" alt="Логотип">
         </div>
         <div class="menu-toggler col">
             <div class="menu-line"></div>
@@ -82,7 +82,7 @@
                     <div id="admin-all-adverts">
                         <?php foreach($banners as $banner):?>
                             <a href="#" class="row line-row" id="<?=$banner->id?>">
-                                <div class="row"><img src="/imgs/admin-data/<?=$banner->image?>" alt=""></div>
+                                <div class="row"><img src="/imgs/admin-data/<?=$banner->image?>" alt="Баннер"></div>
                                 <div class="row"><?=mb_strcut($banner->header,0,75)?></div>
                                 <div class="row"><?=mb_strcut($banner->what,0,75) ?></div>
                                 <div class="row"><?=mb_strcut($banner->text,0,100)?></div>
@@ -98,7 +98,7 @@
                     <?php if(isset($_SESSION['update_brand'])):?>
                         <h4>Текующий бренд для редактирования</h4>
                         <div class="current-brand-update line-row row">
-                            <div class="row"><img src="/imgs/admin-data/<?=$_SESSION['update_brand']['image']?>" alt=""></div>
+                            <div class="row"><img src="/imgs/admin-data/<?=$_SESSION['update_brand']['image']?>" alt="Логотип"></div>
                             <div class="row"><?=mb_strcut($_SESSION['update_brand']['cat_name'],0,75)?></div>
                             <div class="row"><?=mb_strcut($_SESSION['update_brand']['name'],0,75) ?></div>
                             <div class="row">
@@ -153,7 +153,7 @@
                     <div id="admin-all-brands">
                         <?php foreach ($brands as $brand): ?>
                             <a href="#" class="row line-row" id="<?=$brand->id?>">
-                                <div class="row"><img src="../../imgs/admin-data/<?=$brand->image?>" alt=""></div>
+                                <div class="row"><img src="/imgs/admin-data/<?=$brand->image?>" alt="Логотип"></div>
                                 <div class="row"><?=$brand->cat_name?></div>
                                 <div class="row"><?=$brand->name?></div>
                                 <div class="row" style="color:<?=$brand->color?>"><?=$brand->color?></div>
@@ -324,7 +324,7 @@
                 <div class="all-records col">
                     <?php foreach ($users as $user): //TODO вместо # в ссылке будет просмотр пользователя?>
                         <a class="row line-row" href="/route/admin/admin-user/index.php?user_id=<?=$user->id?>"  id="<?=$user->id?>">
-                            <div class="row"><img src="../../imgs/user-data/<?=$user->image?>" alt=""></div>
+                            <div class="row"><img src="../../imgs/user-data/<?=$user->image?>" alt="Аватар"></div>
                             <div class="row"><span><?=$user->login?></span></div>
                             <div class="row"><span><?=$user->email?></span></div>
                             <div class="row"><span><?=$user->role_name?></span></div>

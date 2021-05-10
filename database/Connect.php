@@ -4,6 +4,7 @@
 namespace database;
 use PDO;
 
+//Класс, реализующий подключение к базе данных
 class Connect
 {
     public static function makeConn(array $connection):PDO

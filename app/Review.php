@@ -4,6 +4,7 @@
 namespace app;
 use PDO;
 
+//Данный класс описывает пользовательский отзыв к товару
 class Review
 {
     use DBLogger;

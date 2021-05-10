@@ -5,7 +5,7 @@ namespace app;
 use PDO;
 use app\Product;
 
-
+//Данный класс реализует логику пользовательской коризны
 class Basket
 {
     private Product $productWorker;
@@ -31,14 +31,6 @@ class Basket
     }
 
 
-//    public function deleteProduct(int $id){
-//        var_dump($this->basketRes['products']);
-//        $product = $this->productWorker->getOneProduct($id);
-//        if(in_array($product, $this->basketRes['products'])){
-//            $index = array_search($product, $this->basketRes['products']);
-//            unset($this->basketRes['products'][$index]);
-//        }
-//    }
 
     public function getSumPrice(){
         $sum = 0;

@@ -4,6 +4,7 @@
 namespace app;
 use PDO;
 
+//Данный класс описывает бренды-производители
 class Brand
 {
     private string $tableName = 'brands';

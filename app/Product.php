@@ -4,7 +4,7 @@
 namespace app;
 use PDO;
 
-
+//Данный класс описывает позицию товара
 class Product
 {
     private string $tableName = 'products';

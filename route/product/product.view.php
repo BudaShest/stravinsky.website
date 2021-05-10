@@ -19,11 +19,11 @@
                         <h2><?=$product->name?></h2>
                         <div class="row one-product-top">
                             <div class="col one-product-imgs">
-                                <img id="one-product-main-img" src="" alt="">
+                                <img id="one-product-main-img" src="" alt="Основное изображение">
                                 <div class="row mini-imgs">
 
                                     <?php foreach($productImgs as $productImg):?>
-                                        <img src="../../imgs/admin-data/<?=$productImg?>" alt="">
+                                        <img src="../../imgs/admin-data/<?=$productImg?>" alt="Мини-изображение">
                                     <?php endforeach;?>
                                 </div>
                             </div>
@@ -85,7 +85,7 @@
                         <?php foreach($reviews as $review):?>
                             <div class="review row">
                                 <div class="row review-user">
-                                    <img src="/imgs/user-data/<?=$review->user_image?>" alt="">
+                                    <img src="/imgs/user-data/<?=$review->user_image?>" alt="Аватар">
                                     <h4><?=$review->login?></h4>
                                 </div>
                                 <p><?=$review->text?></p>
@@ -97,7 +97,7 @@
                                             <h5>Показать вложения</h5>
                                         </header>
                                         <?php foreach($reviewImgs as $reviewImg):?>
-                                            <img src="/imgs/user-data/<?=$reviewImg?>" alt="">
+                                            <img src="/imgs/user-data/<?=$reviewImg?>" alt="Прикрлённое изображение">
                                         <?php endforeach;?>
                                     </div>
                                 <?php endif; ?>
@@ -116,8 +116,7 @@
                                 <div class="front col">
                                     <h4><?=$anotherProduct->name?></h4>
                                     <span class="product-category"><?=$anotherProduct->cat_name?></span>
-                                    <img src="../../imgs/admin-data/<?=$anotherProduct->image?>" alt="">
-                                    <span><?=$anotherProduct->rating?></span>
+                                    <img src="../../imgs/admin-data/<?=$anotherProduct->image?>" alt="Изображение">
                                     <div class="row">
                                         <span class="old-price"><strike><?=$anotherProduct->price?> руб.</strike></span><span class="new-price"><?=$anotherProduct->price?> руб.</span>
                                     </div>

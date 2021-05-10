@@ -10,10 +10,10 @@
     <div class="admin-wrapper">
         <header class="header row">
             <div class="logo">
-                <img src="/imgs/logo.png" alt="">
+                <img src="/imgs/logo.png" alt="Логотип">
             </div>
             <a href="/route/admin" class="menu-back-btn col">
-                <img src="/imgs/cancel.png" alt="">
+                <img src="/imgs/cancel.png" alt="Назад">
             </a>
         </header>
         <main class="main col">
@@ -21,7 +21,7 @@
                 <div class="container col">
                     <h2>Информация о пользователе</h2>
                     <div class="admin-user-info row">
-                        <div class="row admin-user-info-img"><img src="/imgs/user-data/<?=$user->image?>" alt=""></div>
+                        <div class="row admin-user-info-img"><img src="/imgs/user-data/<?=$user->image?>" alt="Аватар"></div>
                         <div class="col">
                             <h3>Логин: <?=$user->login?></h3>
                             <span>Email: <?=$user->email?></span>

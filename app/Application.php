@@ -4,7 +4,7 @@
 namespace app;
 use PDO;
 
-
+//Данный класс описывает логину пользовательской заявки(заказа)
 class Application
 {
     private string $tableName = "application";

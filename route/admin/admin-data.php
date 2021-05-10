@@ -2,6 +2,7 @@
 session_start();
 require $_SERVER["DOCUMENT_ROOT"]."/bootstrap.php";
 
+//Проверка на то, авторизован ли админ
 if(isset($_SESSION["is_admin_auth"]) && $_SESSION["is_admin_auth"]===true){
     $users = $dataUser->getAllRecords();
     $subcategories = $dataCategory->getSubCategories();

@@ -4,6 +4,7 @@
 namespace app;
 use PDO;
 
+//Данный класс описывает рекламный баннер
 class Banner
 {
     use DBLogger;

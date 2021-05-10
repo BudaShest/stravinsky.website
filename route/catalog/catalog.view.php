@@ -34,8 +34,7 @@
                                 <div class="front col">
                                     <h4><?=$product->name?></h4>
                                     <span class="product-category"><?=$product->cat_name?></span>
-                                    <img src="../../imgs/admin-data/<?=$product->image?>" alt="Картинка товара">
-                                    <span><?=$product->rating?></span>
+                                    <img src="/imgs/admin-data/<?=$product->image?>" alt="Картинка товара">
                                     <div class="row">
                                         <span class="old-price"><strike><?=$product->price?> руб.</strike></span><span class="new-price"><?=$product->price?> руб.</span>
                                     </div>

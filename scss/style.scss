@@ -94,8 +94,6 @@ button{
   .mobile-menu-grid{
     height: 80%;
     display: grid;
-    //grid-template-columns: 1fr 1fr;
-    //grid-template-rows: 1fr 1fr 1fr;
     grid-gap: 10px;
     a{
       text-decoration: none;
@@ -733,7 +731,8 @@ button{
             width: 200px;
             padding: 7px;
             img{
-              max-height: 100px;
+              height: 100px;
+              object-fit: contain;
               border-radius: 50%;
             }
           }

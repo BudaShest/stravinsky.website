@@ -4,7 +4,7 @@
 namespace app;
 use PDO;
 
-
+//Данный класс описывает категории товаров
 class Category
 {
     private string $tableName = 'categories';

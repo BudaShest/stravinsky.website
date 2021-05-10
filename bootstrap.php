@@ -1,9 +1,11 @@
 <?php
+//Данный файл нужен для подключения всех необходимых для сайта модулей и классов.
 require $_SERVER['DOCUMENT_ROOT'] . "/vendor/autoload.php";
 require $_SERVER['DOCUMENT_ROOT'] . "/database/config.php";
-require $_SERVER['DOCUMENT_ROOT'] . "/config/config.php"; //TODO Или переделать в классы
+require $_SERVER['DOCUMENT_ROOT'] . "/config/config.php";
 require $_SERVER['DOCUMENT_ROOT'] . "/services/mail/mail.php";
 
+//Пространства имён
 use app\User;
 use database\Connect;
 use app\Category;

@@ -2,7 +2,7 @@
 session_start();
 require $_SERVER["DOCUMENT_ROOT"]."/bootstrap.php";
 
-//TODO вынести вот это иф в функцию, т.к авторизация повторяется
+//Авторизация в админ-панель
 if(isset($_POST['btn_submit'])){
     $login = htmlentities($_POST['admin_login']);
     $password = htmlentities($_POST['admin_password']);

@@ -4,6 +4,7 @@
 namespace app;
 use finfo;
 
+//Данный класс реилзует работу с файловой системой
 class FileWorker
 {
     private static int $maxFileSize = 5*1024*1024;
@@ -13,7 +14,7 @@ class FileWorker
     public static function validateImg($uploadImg):bool
     {
         $fi = new finfo(FILEINFO_MIME_TYPE);
-        $currFileType = $fi->file($uploadImg['tmp_name']);
+        @$currFileType = $fi->file($uploadImg['tmp_name']);
 
 
         $currFileSize = filesize($uploadImg['tmp_name']);
