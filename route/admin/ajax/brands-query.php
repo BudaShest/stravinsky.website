@@ -83,3 +83,10 @@ if(isset($_POST['all_statuses'])){
     $allStatuses = $dataApplication->getStatuses();
     echo json_encode($allStatuses, JSON_UNESCAPED_UNICODE);
 }
+
+if(isset($_POST['product_num']) && isset($_POST['prod_id'])){
+
+    $_SESSION['basket'][$_POST['prod_id']] = $_POST['product_num'];
+
+
+}

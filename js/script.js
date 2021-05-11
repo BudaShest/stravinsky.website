@@ -16,15 +16,7 @@ let textDropElements = document.querySelectorAll('.text-drop');
 
 let reviewsImgsTogglers = document.querySelectorAll('.review-imgs');
 
-let productNumInput = document.querySelector('#product-num-input');
-let productPrice = document.querySelector('#one-product-price');
-let oneProductSumPrice = document.querySelector('#one-product-sum-price');
 
-if(productNumInput!==null && productPrice!==null ** oneProductSumPrice!==null){
-   productNumInput.addEventListener('change',function (){
-      oneProductSumPrice.textContent = productPrice.textContent * this.value;
-   });
-}
 
 if(reviewsImgsTogglers.length>0){
    reviewsImgsTogglers.forEach(item=>item.addEventListener('click',function (e){

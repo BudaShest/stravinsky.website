@@ -18,7 +18,7 @@ class Basket
 
     public function basketCreate(array $basket)
     {
-        $basketRes = [];
+
         foreach ($basket as $prodId=>$quantity) {
             $this->basketRes['products'][] = $this->productWorker->getOneProduct($prodId);
             $this->basketRes['quantity'][] = $quantity;
@@ -31,16 +31,16 @@ class Basket
     }
 
 
-
-    public function getSumPrice(){
-        $sum = 0;
-        if($this->basketRes){
-            foreach ($this->basketRes['products'] as $key => $product){
-                $sum += $product->price * $this->basketRes['quantity'][$key];
-            }
-        }
-        return $sum;
-    }
+//Это перенесено на клиентскую сторону
+//    public function getSumPrice(){
+//        $sum = 0;
+//        if($this->basketRes){
+//            foreach ($this->basketRes['products'] as $key => $product){
+//                $sum += $product->price * $this->basketRes['quantity'][$key];
+//            }
+//        }
+//        return $sum;
+//    }
 
     public function clearBasket(){
         if(isset($_SESSION['basket'])){

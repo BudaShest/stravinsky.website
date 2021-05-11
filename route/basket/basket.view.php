@@ -18,15 +18,16 @@
                 <h2>Корзина</h2>
                 <div class="basket-container">
                     <header>
-                        <span>Суммарная стоимость <?= $basketSumPrice ?> руб.</span>
+                        <span>Суммарная стоимость <span id="basket-sum-price"></span> руб.</span>
                     </header>
                     <?php foreach($basketProducts['products'] as $key=>$basketProduct):?>
+                        <?php $basketImg = $dataProduct->getImageName($basketProduct->id)?>
                         <div class="basket-product row">
-                            <img src="<?=$basketProduct->image?>" alt="Изображение товара">
+                            <img src="/imgs/admin-data/<?=$basketImg[0]?>" alt="Изображение товара">
                             <span><?=$basketProduct->name?></span>
                             <span><?=$basketProduct->cat_name?></span>
-                            <span><?=$basketProduct->price?> руб.</span>
-                            <span><?=$basketProducts['quantity'][$key]?> шт.</span>
+                            <span class="product-price-span"><?=$basketProduct->price?> руб.</span>
+                            <span><input type="number" data-prod-price="<?=$basketProduct->price?>" data-prod-id="<?=$basketProduct->id?>" class="product-quantity" min="1" max="10" value="<?=$basketProducts['quantity'][$key]?>">шт.</span>
                             <form action="/route/basket/basket-logic.php" method="get">
                                 <input type="number" name="basket_product_id" value="<?=$basketProduct->id?>" readonly hidden>
                                 <button name="basket_product_del_btn">Удалить</button>
@@ -36,7 +37,7 @@
                     <?php endforeach;?>
                     <footer>
                         <form action="/route/basket/basket-logic.php" class="row form-application-confirm">
-                            <input type="number" name="application_sum_price" value="<?=$basketSumPrice?>" readonly hidden>
+                            <input type="number" name="application_sum_price" id="application-sum-price" value="" readonly hidden>
                             <div class="form-template-btns row">
                                 <button class="btn-postive" name="btn_application_submit">Подвтердить</button>
                                 <button class="btn-negative" name="btn_basket_clear">Очистить</button>

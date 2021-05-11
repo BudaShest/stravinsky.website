@@ -569,6 +569,16 @@ span>a{
         align-items: center;
         border:2px solid $purple-col;
         margin: 10px 0;
+        padding: 7px;
+        img{
+          max-height: 150px;
+          max-width: 200px;
+          margin: 10px;
+          object-fit: contain;
+        }
+        input[type="number"]{
+          font-size: 1.2em;
+        }
       }
       .form-application-confirm{
         justify-content: center;

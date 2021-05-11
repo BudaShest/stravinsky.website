@@ -1,4 +1,13 @@
 import {sendRequest, render} from "/ajax/functions.js";
+
+function getSumPrice(){
+    let sumPrice = 0;
+    productQuantity.forEach(item=>{
+        sumPrice += item.dataset.prodPrice * item.value;
+    })
+    return sumPrice;
+}
+
 let superCatLinks = document.querySelectorAll('.super-category-link');
 let categoriesContainer = document.querySelector('#main-all-categories');
 
@@ -33,6 +42,33 @@ let productTemplate = `<a href="/route/product/index.php?product_id=:id">
                                 </div>
                             </div>
                         </a>`;
+
+let productQuantity = document.querySelectorAll('.product-quantity');
+
+let basketSumPrice = document.querySelector('#basket-sum-price');
+
+let applicationSumPrice = document.querySelector('#application-sum-price');
+
+window.addEventListener('DOMContentLoaded',function (){
+    basketSumPrice.textContent = getSumPrice();
+    applicationSumPrice.value = getSumPrice();
+})
+
+productQuantity.forEach(item=>item.addEventListener('change',function (e){
+    let prodId = this.dataset.prodId;
+    let prodQuantity = this.value;
+
+    sendRequest('POST','/route/admin/ajax/brands-query.php','product_num='+prodQuantity+'&prod_id='+prodId)
+        .then(data=>{
+            console.log(data);
+        })
+        .catch(data=>{
+            console.error(data);
+        })
+    basketSumPrice.textContent = getSumPrice();
+    applicationSumPrice.value = getSumPrice();
+}))
+
 
 if(catalogBrandSelect != null){
     catalogBrandSelect.addEventListener('change',function (){

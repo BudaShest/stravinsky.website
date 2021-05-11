@@ -349,7 +349,7 @@
                     </header>
                     <div id="admin-all-applications">
                         <?php foreach ($applications as $application):?>
-                            <a class="row line-row" href="#"  id="<?=$application->id?>">
+                            <a class="row line-row" href="/route/admin/admin-applications/index.php?application_id=<?=$application->id?>"  id="<?=$application->id?>">
                                 <div class="row"><span>Заявка №<?=$application->id?></span></div>
                                 <div class="row"><span><?=$application->created_at?></span></div>
                                 <span class="row"><span><?=$application->login?></span></span>

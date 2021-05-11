@@ -4,8 +4,8 @@ require $_SERVER['DOCUMENT_ROOT']. "/bootstrap.php";
 
 //Обработка добавления товара в корзину
 if(isset($_GET['btn_basket_submit'])){
-    if(isset($_GET['product_id']) && isset($_GET['product_basket_num'])){
-        $_SESSION['basket'][$_GET['product_id']] = $_GET['product_basket_num'];
+    if(isset($_GET['product_id'])){
+        $_SESSION['basket'][$_GET['product_id']] = 1;
     }
     header('Location: /route/basket');
 }
