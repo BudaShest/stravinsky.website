@@ -4,6 +4,7 @@ let adminModalCloseBtn = document.querySelector('#admin-modal-close');
 
 let allSections = document.querySelectorAll('section');
 let allSectionTogglers = document.querySelectorAll('.admin-modal ul li a');
+let startSection = document.querySelector('#admin-main-start');
 
 let allRecords = document.querySelectorAll('.all-records');
 let contextMenu = document.querySelector('.modal-context-menu');
@@ -12,6 +13,10 @@ let contextIdInput = document.querySelector('#context-table-id');
 
 let bannerImgInput = document.querySelector('#banner-img-input');
 let bannerStrImgInput = document.querySelector('#banner-img-str');
+
+window.addEventListener('DOMContentLoaded', function (){
+    console.log();
+})
 
 if(bannerImgInput && bannerStrImgInput){
     bannerImgInput.addEventListener('change',function (){

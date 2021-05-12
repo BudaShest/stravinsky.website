@@ -23,11 +23,68 @@
         </div>
     </header>
     <main class="main col">
+        <section id="admin-main-start">
+            <div class="container col">
+                <h2>Текущие записи для редактирования</h2>
+                <?php if(isset($_SESSION['update_banner'])):?>
+                    <h4>Реклама</h4>
+                    <div class="current-banner-update line-row row">
+                        <div class="row"><img src="/imgs/admin-data/<?=$_SESSION['update_banner']['image']?>" alt=""></div>
+                        <div class="row"><?=mb_strcut($_SESSION['update_banner']['header'],0,75)?></div>
+                        <div class="row"><?=mb_strcut($_SESSION['update_banner']['what'],0,75) ?></div>
+                        <div class="row">
+                            <form method="post" action="/route/admin/admin-logic.php">
+                                <button name="btn_update_banner_delete">Отменить изменения</button>
+                            </form>
+                        </div>
+                    </div>
+                <?php endif;?>
+                <?php if(isset($_SESSION['update_brand'])):?>
+                    <h4>Бренды:</h4>
+                    <div class="current-brand-update line-row row">
+                        <div class="row"><img src="/imgs/admin-data/<?=$_SESSION['update_brand']['image']?>" alt="Логотип"></div>
+                        <div class="row"><?=mb_strcut($_SESSION['update_brand']['cat_name'],0,75)?></div>
+                        <div class="row"><?=mb_strcut($_SESSION['update_brand']['name'],0,75) ?></div>
+                        <div class="row">
+                            <form method="post" action="/route/admin/admin-logic.php">
+                                <button name="btn_update_brand_delete">Отменить изменения</button>
+                            </form>
+                        </div>
+                    </div>
+                <?php endif;?>
+                <?php if(isset($_SESSION['update_category'])):?>
+                    <h4>Категории:</h4>
+                    <div class="current-category-update line-row row">
+                        <div class="row"><?=$_SESSION['update_category']['name']?></div>
+                        <div class="row"><?=mb_strcut($_SESSION['update_category']['sub_name'],0,75)?></div>
+                        <div class="row"><?=mb_strcut($_SESSION['update_category']['color'],0,75) ?></div>
+                        <div class="row">
+                            <form method="post" action="/route/admin/admin-logic.php">
+                                <button name="btn_update_category_delete">Отменить изменения</button>
+                            </form>
+                        </div>
+                    </div>
+                <?php endif;?>
+                <?php if(isset($_SESSION['update_product'])):?>
+                    <h4>Товары:</h4>
+                    <div class="current-category-update line-row row">
+                        <div class="row"><?=$_SESSION['update_product']['name']?></div>
+                        <div class="row"><?=mb_strcut($_SESSION['update_product']['cat_name'],0,75)?></div>
+                        <div class="row"><?=mb_strcut($_SESSION['update_product']['price'],0,75) ?></div>
+                        <div class="row">
+                            <form method="post" action="/route/admin/admin-logic.php">
+                                <button name="btn_update_product_delete">Отменить изменения</button>
+                            </form>
+                        </div>
+                    </div>
+                <?php endif;?>
+            </div>
+        </section>
         <section id="admin-main-settings" class="row">
             <div class="container col">
                 <header>
                     <?php if(isset($_SESSION['update_banner'])):?>
-                    <h4>Текующий пост для редактирования</h4>
+                    <h4>Текующий баннер для редактирования</h4>
                     <div class="current-banner-update line-row row">
                         <div class="row"><img src="/imgs/admin-data/<?=$_SESSION['update_banner']['image']?>" alt=""></div>
                         <div class="row"><?=mb_strcut($_SESSION['update_banner']['header'],0,75)?></div>
@@ -103,7 +160,7 @@
                             <div class="row"><?=mb_strcut($_SESSION['update_brand']['name'],0,75) ?></div>
                             <div class="row">
                                 <form method="post" action="/route/admin/admin-logic.php">
-                                    <button name="btn_update_brand_delete">Удалить</button>
+                                    <button name="btn_update_brand_delete">Отменить изменения</button>
                                 </form>
                             </div>
                         </div>
@@ -174,7 +231,7 @@
                             <div class="row"><?=mb_strcut($_SESSION['update_category']['color'],0,75) ?></div>
                             <div class="row">
                                 <form method="post" action="/route/admin/admin-logic.php">
-                                    <button name="btn_update_category_delete">Удалить</button>
+                                    <button name="btn_update_category_delete">Отменить изменения</button>
                                 </form>
                             </div>
                         </div>
@@ -235,14 +292,14 @@
             <div class="container col">
                 <header>
                     <?php if(isset($_SESSION['update_product'])):?>
-                        <h4>Текующий бренд для редактирования</h4>
+                        <h4>Текующий товар для редактирования</h4>
                         <div class="current-category-update line-row row">
                             <div class="row"><?=$_SESSION['update_product']['name']?></div>
                             <div class="row"><?=mb_strcut($_SESSION['update_product']['cat_name'],0,75)?></div>
                             <div class="row"><?=mb_strcut($_SESSION['update_product']['price'],0,75) ?></div>
                             <div class="row">
                                 <form method="post" action="/route/admin/admin-logic.php">
-                                    <button name="btn_update_product_delete">Удалить</button>
+                                    <button name="btn_update_product_delete">Отменить изменения</button>
                                 </form>
                             </div>
                         </div>
